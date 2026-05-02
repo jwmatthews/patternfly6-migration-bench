@@ -1,5 +1,186 @@
 import React from "react";
+import { TC001_AccordionContentIsHidden } from "./test-cases/TC001-accordion-content-isHidden";
+import { TC002_AccordionItemMarkup } from "./test-cases/TC002-accordion-item-markup";
+import { TC003_AccordionToggleIsExpanded } from "./test-cases/TC003-accordion-toggle-isExpanded";
+import { TC004_DataCodemodsCleanup } from "./test-cases/TC004-data-codemods-cleanup";
+import { TC005_AvatarBorder } from "./test-cases/TC005-avatar-border";
+import { TC006_BannerVariant } from "./test-cases/TC006-banner-variant";
+import { TC007_ButtonIconToProp } from "./test-cases/TC007-button-icon-to-prop";
+import { TC008_ButtonIsActive } from "./test-cases/TC008-button-isActive";
+import { TC009_CardRaisedProps } from "./test-cases/TC009-card-raised-props";
+import { TC010_CardSelectableActions } from "./test-cases/TC010-card-selectable-actions";
+import { TC011_CheckboxLabelPosition } from "./test-cases/TC011-checkbox-label-position";
+import { TC012_ChipDeprecated } from "./test-cases/TC012-chip-deprecated";
+import { TC013_ChipToLabel } from "./test-cases/TC013-chip-to-label";
+import { TC014_ColorProps } from "./test-cases/TC014-color-props";
+import { TC015_ContentHeaderRename } from "./test-cases/TC015-content-header-rename";
+import { TC016_DataListAction } from "./test-cases/TC016-datalist-action";
+import { TC017_DeprecatedComponents } from "./test-cases/TC017-deprecated-components";
+import { TC018_DragDropDeprecated } from "./test-cases/TC018-dragdrop-deprecated";
+import { TC019_DrawerHasNoPadding } from "./test-cases/TC019-drawer-hasNoPadding";
+import { TC020_DrawerColorVariant } from "./test-cases/TC020-drawer-colorVariant";
+import { TC021_DrawerContentColor } from "./test-cases/TC021-drawer-content-color";
+import { TC022_DrawerHeadPanelBody } from "./test-cases/TC022-drawer-head-panelbody";
+import { TC023_DualListSelectorDeprecated } from "./test-cases/TC023-duallistselector-deprecated";
+import { TC024_DualListSelectorNext } from "./test-cases/TC024-duallistselector-next";
+import { TC025_DuplicateImports } from "./test-cases/TC025-duplicate-imports";
+import { TC026_EmptyStateExports } from "./test-cases/TC026-emptystate-exports";
+import { TC027_EmptyStateHeader } from "./test-cases/TC027-emptystate-header";
+import { TC028_ErrorStateProps } from "./test-cases/TC028-errorstate-props";
+import { TC029_FormFieldTypo } from "./test-cases/TC029-formfield-typo";
+import { TC030_FormGroupLabelIcon } from "./test-cases/TC030-formgroup-labelicon";
+import { TC031_HelperTextItemHasIcon } from "./test-cases/TC031-helpertextitem-hasIcon";
+import { TC032_HelperTextItemScreenReader } from "./test-cases/TC032-helpertextitem-screenreader";
+import { TC033_InvalidObjectProps } from "./test-cases/TC033-invalidobject-props";
+import { TC034_JumpLinksItemHref } from "./test-cases/TC034-jumplinksitem-href";
+import { TC035_JumpLinksItemMarkup } from "./test-cases/TC035-jumplinksitem-markup";
+import { TC036_KebabToggleRemoved } from "./test-cases/TC036-kebabtoggle-removed";
+import { TC037_LabelOverflow } from "./test-cases/TC037-label-overflow";
+import { TC038_LogSnippetVariant } from "./test-cases/TC038-logsnippet-variant";
+import { TC039_LogViewerStylesheet } from "./test-cases/TC039-logviewer-stylesheet";
+import { TC040_LoginFooterLinks } from "./test-cases/TC040-login-footer-links";
+import { TC041_LoginMainHeader } from "./test-cases/TC041-login-main-header";
+import { TC042_MastheadBrandLogo } from "./test-cases/TC042-masthead-brand-logo";
+import { TC043_MastheadBgColor } from "./test-cases/TC043-masthead-bgcolor";
+import { TC044_MastheadStructure } from "./test-cases/TC044-masthead-structure";
+import { TC045_MenuItemActionMarkup } from "./test-cases/TC045-menuitemaction-markup";
+import { TC046_MenuToggleIcon } from "./test-cases/TC046-menutoggle-icon";
+import { TC047_MissingPage } from "./test-cases/TC047-missing-page";
+import { TC048_ModalDeprecated } from "./test-cases/TC048-modal-deprecated";
+import { TC049_ModalNext } from "./test-cases/TC049-modal-next";
+import { TC050_MultiContentCardProps } from "./test-cases/TC050-multicontentcard-props";
+import { TC051_NavTertiary } from "./test-cases/TC051-nav-tertiary";
+import { TC052_NavTheme } from "./test-cases/TC052-nav-theme";
+import { TC053_NavItemWrapper } from "./test-cases/TC053-navitem-wrapper";
+import { TC054_NotAuthorizedProps } from "./test-cases/TC054-notauthorized-props";
+import { TC055_NotificationBadgeMarkup } from "./test-cases/TC055-notificationbadge-markup";
+import { TC056_NotificationDrawerHeader } from "./test-cases/TC056-notificationdrawer-header";
+import { TC057_PageHeaderToMasthead } from "./test-cases/TC057-page-header-to-masthead";
+import { TC058_PageTertiaryNavGrouped } from "./test-cases/TC058-page-tertiarynav-grouped";
+import { TC059_PageTertiaryNavWidth } from "./test-cases/TC059-page-tertiarynav-width";
+import { TC060_PageTertiaryNav } from "./test-cases/TC060-page-tertiarynav";
+import { TC061_PageBodyWrapper } from "./test-cases/TC061-page-body-wrapper";
+import { TC062_PageSectionBodyWrapper } from "./test-cases/TC062-page-section-bodywrapper";
+import { TC063_PageHeaderToolsIsSelected } from "./test-cases/TC063-pageheader-tools-isselected";
+import { TC064_PageNavigationRemoved } from "./test-cases/TC064-pagenavigation-removed";
+import { TC065_PageSectionNavType } from "./test-cases/TC065-pagesection-nav-type";
+import { TC066_PageSectionVariant } from "./test-cases/TC066-pagesection-variant";
+import { TC067_PageSectionVariantType } from "./test-cases/TC067-pagesection-variant-type";
+import { TC068_PageSidebarTheme } from "./test-cases/TC068-pagesidebar-theme";
+import { TC069_PaginationMarkup } from "./test-cases/TC069-pagination-markup";
+import { TC070_PopperAppendTo } from "./test-cases/TC070-popper-appendto";
+import { TC071_SimpleFileUploadAria } from "./test-cases/TC071-simplefileupload-aria";
+import { TC072_SliderCssVariable } from "./test-cases/TC072-slider-css-variable";
+import { TC073_SwitchLabelOff } from "./test-cases/TC073-switch-labeloff";
+import { TC074_TabsIsSecondary } from "./test-cases/TC074-tabs-issecondary";
+import { TC075_TabsLight300 } from "./test-cases/TC075-tabs-light300";
+import { TC076_TabsScrollMarkup } from "./test-cases/TC076-tabs-scroll-markup";
+import { TC077_TextToContent } from "./test-cases/TC077-text-to-content";
+import { TC078_ThCssVariables } from "./test-cases/TC078-th-css-variables";
+import { TC079_TileDeprecated } from "./test-cases/TC079-tile-deprecated";
+import { TC080_TokensPrefix } from "./test-cases/TC080-tokens-prefix";
+import { TC081_TokensCss } from "./test-cases/TC081-tokens-css";
+import { TC082_ToolbarPropsRemoved } from "./test-cases/TC082-toolbar-props-removed";
+import { TC083_ToolbarChipToLabel } from "./test-cases/TC083-toolbar-chip-to-label";
+import { TC084_ToolbarInterfaceRename } from "./test-cases/TC084-toolbar-interface-rename";
+import { TC085_ToolbarSpacerRemoved } from "./test-cases/TC085-toolbar-spacer-removed";
 
-export const App: React.FC = () => {
-  return <div>PatternFly 6 Migration Bench — test cases will be rendered here</div>;
-};
+const testCases = [
+  { id: "TC001", component: TC001_AccordionContentIsHidden },
+  { id: "TC002", component: TC002_AccordionItemMarkup },
+  { id: "TC003", component: TC003_AccordionToggleIsExpanded },
+  { id: "TC004", component: TC004_DataCodemodsCleanup },
+  { id: "TC005", component: TC005_AvatarBorder },
+  { id: "TC006", component: TC006_BannerVariant },
+  { id: "TC007", component: TC007_ButtonIconToProp },
+  { id: "TC008", component: TC008_ButtonIsActive },
+  { id: "TC009", component: TC009_CardRaisedProps },
+  { id: "TC010", component: TC010_CardSelectableActions },
+  { id: "TC011", component: TC011_CheckboxLabelPosition },
+  { id: "TC012", component: TC012_ChipDeprecated },
+  { id: "TC013", component: TC013_ChipToLabel },
+  { id: "TC014", component: TC014_ColorProps },
+  { id: "TC015", component: TC015_ContentHeaderRename },
+  { id: "TC016", component: TC016_DataListAction },
+  { id: "TC017", component: TC017_DeprecatedComponents },
+  { id: "TC018", component: TC018_DragDropDeprecated },
+  { id: "TC019", component: TC019_DrawerHasNoPadding },
+  { id: "TC020", component: TC020_DrawerColorVariant },
+  { id: "TC021", component: TC021_DrawerContentColor },
+  { id: "TC022", component: TC022_DrawerHeadPanelBody },
+  { id: "TC023", component: TC023_DualListSelectorDeprecated },
+  { id: "TC024", component: TC024_DualListSelectorNext },
+  { id: "TC025", component: TC025_DuplicateImports },
+  { id: "TC026", component: TC026_EmptyStateExports },
+  { id: "TC027", component: TC027_EmptyStateHeader },
+  { id: "TC028", component: TC028_ErrorStateProps },
+  { id: "TC029", component: TC029_FormFieldTypo },
+  { id: "TC030", component: TC030_FormGroupLabelIcon },
+  { id: "TC031", component: TC031_HelperTextItemHasIcon },
+  { id: "TC032", component: TC032_HelperTextItemScreenReader },
+  { id: "TC033", component: TC033_InvalidObjectProps },
+  { id: "TC034", component: TC034_JumpLinksItemHref },
+  { id: "TC035", component: TC035_JumpLinksItemMarkup },
+  { id: "TC036", component: TC036_KebabToggleRemoved },
+  { id: "TC037", component: TC037_LabelOverflow },
+  { id: "TC038", component: TC038_LogSnippetVariant },
+  { id: "TC039", component: TC039_LogViewerStylesheet },
+  { id: "TC040", component: TC040_LoginFooterLinks },
+  { id: "TC041", component: TC041_LoginMainHeader },
+  { id: "TC042", component: TC042_MastheadBrandLogo },
+  { id: "TC043", component: TC043_MastheadBgColor },
+  { id: "TC044", component: TC044_MastheadStructure },
+  { id: "TC045", component: TC045_MenuItemActionMarkup },
+  { id: "TC046", component: TC046_MenuToggleIcon },
+  { id: "TC047", component: TC047_MissingPage },
+  { id: "TC048", component: TC048_ModalDeprecated },
+  { id: "TC049", component: TC049_ModalNext },
+  { id: "TC050", component: TC050_MultiContentCardProps },
+  { id: "TC051", component: TC051_NavTertiary },
+  { id: "TC052", component: TC052_NavTheme },
+  { id: "TC053", component: TC053_NavItemWrapper },
+  { id: "TC054", component: TC054_NotAuthorizedProps },
+  { id: "TC055", component: TC055_NotificationBadgeMarkup },
+  { id: "TC056", component: TC056_NotificationDrawerHeader },
+  { id: "TC057", component: TC057_PageHeaderToMasthead },
+  { id: "TC058", component: TC058_PageTertiaryNavGrouped },
+  { id: "TC059", component: TC059_PageTertiaryNavWidth },
+  { id: "TC060", component: TC060_PageTertiaryNav },
+  { id: "TC061", component: TC061_PageBodyWrapper },
+  { id: "TC062", component: TC062_PageSectionBodyWrapper },
+  { id: "TC063", component: TC063_PageHeaderToolsIsSelected },
+  { id: "TC064", component: TC064_PageNavigationRemoved },
+  { id: "TC065", component: TC065_PageSectionNavType },
+  { id: "TC066", component: TC066_PageSectionVariant },
+  { id: "TC067", component: TC067_PageSectionVariantType },
+  { id: "TC068", component: TC068_PageSidebarTheme },
+  { id: "TC069", component: TC069_PaginationMarkup },
+  { id: "TC070", component: TC070_PopperAppendTo },
+  { id: "TC071", component: TC071_SimpleFileUploadAria },
+  { id: "TC072", component: TC072_SliderCssVariable },
+  { id: "TC073", component: TC073_SwitchLabelOff },
+  { id: "TC074", component: TC074_TabsIsSecondary },
+  { id: "TC075", component: TC075_TabsLight300 },
+  { id: "TC076", component: TC076_TabsScrollMarkup },
+  { id: "TC077", component: TC077_TextToContent },
+  { id: "TC078", component: TC078_ThCssVariables },
+  { id: "TC079", component: TC079_TileDeprecated },
+  { id: "TC080", component: TC080_TokensPrefix },
+  { id: "TC081", component: TC081_TokensCss },
+  { id: "TC082", component: TC082_ToolbarPropsRemoved },
+  { id: "TC083", component: TC083_ToolbarChipToLabel },
+  { id: "TC084", component: TC084_ToolbarInterfaceRename },
+  { id: "TC085", component: TC085_ToolbarSpacerRemoved },
+];
+
+export const App: React.FC = () => (
+  <div style={{ padding: "24px" }}>
+    <h1>PatternFly 6 Migration Bench — 85 Test Cases</h1>
+    {testCases.map(({ id, component: Component }) => (
+      <div key={id} style={{ marginBottom: "24px", border: "1px solid #ccc", padding: "16px" }}>
+        <h3>{id}</h3>
+        <Component />
+      </div>
+    ))}
+  </div>
+);
