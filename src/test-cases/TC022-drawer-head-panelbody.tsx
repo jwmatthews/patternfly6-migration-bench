@@ -3,13 +3,14 @@ import { Drawer, DrawerContent, DrawerContentBody, DrawerHead, DrawerPanelConten
 
 export const TC022_DrawerHeadPanelBody: React.FC = () => (
   <Drawer isExpanded>
-    <DrawerContent>
+    <DrawerContent panelContent={
+      <DrawerPanelContent>
+        <DrawerHead>
+          <span>Title inside DrawerHead</span>
+        </DrawerHead>
+      </DrawerPanelContent>
+    }>
       <DrawerContentBody>Main content</DrawerContentBody>
     </DrawerContent>
-    <DrawerPanelContent>
-      <DrawerHead>
-        <span>Title inside DrawerHead</span>
-      </DrawerHead>
-    </DrawerPanelContent>
   </Drawer>
 );
