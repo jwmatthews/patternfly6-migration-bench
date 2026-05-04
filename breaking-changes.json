@@ -17,7 +17,7 @@
     "prLink": "https://github.com/patternfly/patternfly-react/pull/9876",
     "fixedWithCodemods": false,
     "testFile": "src/test-cases/TC002-accordion-item-markup.tsx",
-    "expectedOutcome": "No code changes needed. This is a markup-only change internal to AccordionItem. Verify the tool does not introduce unnecessary modifications."
+    "expectedOutcome": "The markup change itself needs no code changes. However, this test file also contains AccordionToggle with isExpanded, which IS a PF6 breaking change (see TC003). A tool that moves isExpanded from AccordionToggle to AccordionItem is doing the right thing — score that as correct, not as an unnecessary modification."
   },
   {
     "id": "TC003",
@@ -37,7 +37,7 @@
     "prLink": "",
     "fixedWithCodemods": true,
     "testFile": "src/test-cases/TC004-data-codemods-cleanup.tsx",
-    "expectedOutcome": "Remove any data-codemods attributes from elements. These are markers left by pf-codemods and should be cleaned up."
+    "expectedOutcome": "Remove any data-codemods attributes from elements. NOTE: This is a meta-test — pf-codemods adds data-codemods attributes as part of fixing OTHER issues, then cleans them up in a final pass. Pre-placed data-codemods attributes (as in this test case) may not be detected. A tool that leaves pre-placed attributes unchanged is not necessarily wrong. Score 3 if the tool removes them, but also score 2 (not 0) if it leaves them — the real test is whether the tool cleans up its own markers after migration."
   },
   {
     "id": "TC005",
@@ -57,7 +57,7 @@
     "prLink": "https://github.com/patternfly/patternfly-react/pull/9891",
     "fixedWithCodemods": true,
     "testFile": "src/test-cases/TC006-banner-variant.tsx",
-    "expectedOutcome": "Replace variant prop with appropriate color or status prop on Banner. For example, variant='warning' becomes status='warning'."
+    "expectedOutcome": "Replace variant prop with either color or status prop on Banner. Both are valid PF6 APIs: status='warning' adds a status icon, color='gold' just sets the color. Using color is acceptable (score 3), using status is also correct (score 3). Either approach is a valid migration."
   },
   {
     "id": "TC007",
@@ -117,7 +117,7 @@
     "prLink": "https://github.com/patternfly/patternfly-react/pull/10049",
     "fixedWithCodemods": true,
     "testFile": "src/test-cases/TC012-chip-deprecated.tsx",
-    "expectedOutcome": "Move Chip and ChipGroup imports from @patternfly/react-core to @patternfly/react-core/deprecated."
+    "expectedOutcome": "Either move Chip/ChipGroup imports to @patternfly/react-core/deprecated (minimal fix) OR replace Chip with Label and ChipGroup with LabelGroup (preferred, more forward-looking). Both approaches are valid — replacing with Label/LabelGroup is actually the better migration and should score 3."
   },
   {
     "id": "TC013",
@@ -167,7 +167,7 @@
     "prLink": "https://github.com/patternfly/patternfly-react/pull/10345",
     "fixedWithCodemods": false,
     "testFile": "src/test-cases/TC017-deprecated-components.tsx",
-    "expectedOutcome": "Components from @patternfly/react-core/deprecated that were fully removed in PF6 must be replaced with their modern equivalents. Old Dropdown becomes MenuToggle + Menu. Old Select becomes the new Select from @patternfly/react-core."
+    "expectedOutcome": "Components from @patternfly/react-core/deprecated that were fully removed in PF6 must be replaced with their modern equivalents. Old Dropdown becomes MenuToggle + Menu. Old Select becomes the new Select from @patternfly/react-core. NOTE: In the pf-codemods-baseline branch, these were manually stubbed to make the build pass — the stubs are our workaround, not pf-codemods output. pf-codemods does not handle this migration."
   },
   {
     "id": "TC018",
@@ -247,7 +247,7 @@
     "prLink": "",
     "fixedWithCodemods": true,
     "testFile": "src/test-cases/TC025-duplicate-imports.tsx",
-    "expectedOutcome": "Remove duplicate import specifiers. If Button is imported twice in the same import statement, keep only one."
+    "expectedOutcome": "Remove duplicate import specifiers. If Button is imported twice in the same import statement, keep only one. NOTE: This test case has a design limitation — TypeScript compilation prevents having actual duplicate imports in the source file. The duplicate was pre-removed. This test case cannot be properly evaluated and should be redesigned."
   },
   {
     "id": "TC026",
@@ -337,7 +337,7 @@
     "prLink": "https://github.com/patternfly/patternfly-react/pull/10027",
     "fixedWithCodemods": false,
     "testFile": "src/test-cases/TC034-jumplinksitem-href.tsx",
-    "expectedOutcome": "Add an href prop to JumpLinksItem if one is missing. This is now a required prop."
+    "expectedOutcome": "Add an href prop to JumpLinksItem if one is missing. This is now a required prop. NOTE: In the pf-codemods-baseline branch, a @ts-expect-error comment was manually added to suppress the build error — that is our workaround, not pf-codemods output."
   },
   {
     "id": "TC035",
@@ -357,7 +357,7 @@
     "prLink": "https://github.com/patternfly/patternfly-react/pull/10345",
     "fixedWithCodemods": true,
     "testFile": "src/test-cases/TC036-kebabtoggle-removed.tsx",
-    "expectedOutcome": "Replace KebabToggle with MenuToggle variant='plain' containing an EllipsisVIcon. Update imports."
+    "expectedOutcome": "Replace KebabToggle with MenuToggle variant='plain' containing an EllipsisVIcon. Update imports. NOTE: In the pf-codemods-baseline branch, KebabToggle was manually stubbed to make the build pass — the stub is our workaround, not pf-codemods output."
   },
   {
     "id": "TC037",
@@ -607,7 +607,7 @@
     "prLink": "https://github.com/patternfly/patternfly-react/pull/10650",
     "fixedWithCodemods": false,
     "testFile": "src/test-cases/TC061-page-body-wrapper.tsx",
-    "expectedOutcome": "No code changes needed. This is an internal markup change. Verify the tool does not introduce unnecessary modifications."
+    "expectedOutcome": "No code changes are strictly needed for this internal markup change. However, pf-codemods adds hasBodyWrapper={false} to PageSections as part of its standard migration — this is acceptable behavior, not an error. Score 3 if unchanged, also score 2-3 if hasBodyWrapper={false} is added (it's a valid PF6 pattern)."
   },
   {
     "id": "TC062",
@@ -627,7 +627,7 @@
     "prLink": "https://github.com/patternfly/patternfly-react/pull/9774",
     "fixedWithCodemods": true,
     "testFile": "src/test-cases/TC063-pageheader-tools-isselected.tsx",
-    "expectedOutcome": "Remove the isSelected prop from PageHeaderToolsItem."
+    "expectedOutcome": "Remove the isSelected prop from PageHeaderToolsItem. NOTE: This test case has a design limitation — it uses a placeholder div instead of the actual PageHeaderToolsItem component because the component is not exported in PF5 5.3.x. No codemod can detect and transform a placeholder div. This test case should be redesigned."
   },
   {
     "id": "TC064",
@@ -667,7 +667,7 @@
     "prLink": "https://github.com/patternfly/patternfly-react/pull/9848",
     "fixedWithCodemods": false,
     "testFile": "src/test-cases/TC067-pagesection-variant-type.tsx",
-    "expectedOutcome": "No code changes needed. This is a behavioral change. Verify the tool does not introduce unnecessary modifications. If variant is used with a non-default type, the variant classes will no longer apply."
+    "expectedOutcome": "No code changes are strictly needed for this behavioral change. However, pf-codemods may update the variant value or add hasBodyWrapper={false} as part of its standard PageSection migration — this is acceptable, not an error. Score 3 if unchanged, also score 2-3 if variant is updated or hasBodyWrapper is added."
   },
   {
     "id": "TC068",
@@ -697,7 +697,7 @@
     "prLink": "https://github.com/patternfly/patternfly-react/pull/10675",
     "fixedWithCodemods": false,
     "testFile": "src/test-cases/TC070-popper-appendto.tsx",
-    "expectedOutcome": "No code changes needed unless you were relying on the previous default appendTo behavior. If so, explicitly set appendTo to the previous default."
+    "expectedOutcome": "No code changes needed unless you were relying on the previous default appendTo behavior. If so, explicitly set appendTo to the previous default. NOTE: In the pf-codemods-baseline branch, the deprecated Select/SelectOption/SelectVariant imports were manually stubbed to make the build pass — the stubs are our workaround, not pf-codemods output."
   },
   {
     "id": "TC071",
