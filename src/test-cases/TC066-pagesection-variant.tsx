@@ -3,8 +3,8 @@ import { PageSection } from "@patternfly/react-core";
 
 export const TC066_PageSectionVariant: React.FC = () => (
   <div>
-    <PageSection variant="light">Light section</PageSection>
-    <PageSection variant="dark">Dark section</PageSection>
-    <PageSection variant="darker">Darker section</PageSection>
+    <PageSection hasBodyWrapper={false} >Light section</PageSection>
+    <PageSection hasBodyWrapper={false} >Dark section</PageSection>
+    <PageSection hasBodyWrapper={false} >Darker section</PageSection>
   </div>
 );

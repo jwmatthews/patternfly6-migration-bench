@@ -4,7 +4,7 @@ import { TimesIcon, PlusCircleIcon } from "@patternfly/react-icons";
 
 export const TC007_ButtonIconToProp: React.FC = () => (
   <div>
-    <Button variant="plain"><TimesIcon /></Button>
-    <Button variant="primary"><PlusCircleIcon /> Add item</Button>
+    <Button icon={<TimesIcon />} variant="plain" />
+    <Button icon={<PlusCircleIcon />} variant="primary"> Add item</Button>
   </div>
 );

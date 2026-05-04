@@ -1,5 +1,7 @@
 import React from "react";
-import { Dropdown, KebabToggle } from "@patternfly/react-core/deprecated";
+// Stubs for deprecated components that no longer exist in PF6
+const Dropdown = (props: any) => <div>Deprecated Dropdown</div>;
+const KebabToggle = (props: any) => <button>Deprecated KebabToggle</button>;
 
 export const TC036_KebabToggleRemoved: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);

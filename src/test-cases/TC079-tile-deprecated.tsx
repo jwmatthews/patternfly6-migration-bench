@@ -1,5 +1,7 @@
 import React from "react";
-import { Tile } from "@patternfly/react-core";
+import {
+	Tile
+} from '@patternfly/react-core/deprecated';
 
 export const TC079_TileDeprecated: React.FC = () => (
   <div>

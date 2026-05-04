@@ -1,16 +1,16 @@
 import React from "react";
-import { Brand, Button, Masthead, MastheadBrand, MastheadContent, MastheadMain, MastheadToggle } from "@patternfly/react-core";
+import { Brand, Button, Masthead, MastheadLogo, MastheadContent, MastheadMain, MastheadToggle, MastheadBrand } from "@patternfly/react-core";
 import { BarsIcon } from "@patternfly/react-icons";
 
 export const TC044_MastheadStructure: React.FC = () => (
   <Masthead>
-    <MastheadToggle>
-      <Button variant="plain" aria-label="Toggle"><BarsIcon /></Button>
+    
+    <MastheadMain><MastheadToggle>
+      <Button icon={<BarsIcon />} variant="plain" aria-label="Toggle" />
     </MastheadToggle>
-    <MastheadMain>
-      <MastheadBrand>
+      <MastheadBrand data-codemods><MastheadLogo data-codemods>
         <Brand src="/logo.svg" alt="Logo" />
-      </MastheadBrand>
+      </MastheadLogo></MastheadBrand>
     </MastheadMain>
     <MastheadContent>Content</MastheadContent>
   </Masthead>

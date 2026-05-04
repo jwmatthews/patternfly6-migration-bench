@@ -2,7 +2,7 @@ import React from "react";
 import { Page, PageSection } from "@patternfly/react-core";
 
 export const TC058_PageTertiaryNavGrouped: React.FC = () => (
-  <Page isTertiaryNavGrouped>
-    <PageSection>Content</PageSection>
+  <Page isHorizontalSubnavGrouped>
+    <PageSection hasBodyWrapper={false}>Content</PageSection>
   </Page>
 );

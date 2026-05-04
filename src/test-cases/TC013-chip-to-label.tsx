@@ -1,9 +1,9 @@
 import React from "react";
-import { Chip, ChipGroup } from "@patternfly/react-core";
+import { Label, LabelGroup } from '@patternfly/react-core';
 
 export const TC013_ChipToLabel: React.FC = () => (
-  <ChipGroup categoryName="Colors">
-    <Chip onClick={() => {}}>Red</Chip>
-    <Chip onClick={() => {}}>Blue</Chip>
-  </ChipGroup>
+  <LabelGroup categoryName="Colors">
+    <Label variant="outline" onClose={() => {}}>Red</Label>
+    <Label variant="outline" onClose={() => {}}>Blue</Label>
+  </LabelGroup>
 );

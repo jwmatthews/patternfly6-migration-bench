@@ -1,5 +1,5 @@
 import React from "react";
-import { FormFieldGroupHeader, FormGroup, TextInput } from "@patternfly/react-core";
+import { FormGroup, TextInput } from "@patternfly/react-core";
 
 // This tests the interface typo fix: FormFiledGroupHeaderTitleTextObject -> FormFieldGroupHeaderTitleTextObject
 // The actual interface usage would be in TypeScript type annotations

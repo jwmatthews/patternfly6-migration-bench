@@ -1,5 +1,8 @@
 import React from "react";
-import { Select, SelectOption, SelectVariant } from "@patternfly/react-core/deprecated";
+// Stubs for deprecated components that no longer exist in PF6
+const Select = (props: any) => <div>Deprecated Select</div>;
+const SelectOption = (props: any) => <div>Deprecated SelectOption</div>;
+const SelectVariant = { single: "single" as const };
 
 export const TC070_PopperAppendTo: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);

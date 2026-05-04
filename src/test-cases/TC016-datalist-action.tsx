@@ -6,8 +6,8 @@ export const TC016_DataListAction: React.FC = () => (
     <DataListItem>
       <DataListItemRow>
         <DataListItemCells dataListCells={[<DataListCell key="cell">Cell</DataListCell>]} />
-        <DataListAction id="action1" aria-label="actions" aria-labelledby="action1" isPlainButtonAction>
-          <Button variant="plain">Action</Button>
+        <DataListAction id="action1" aria-label="actions" aria-labelledby="action1" >
+          <Button icon="Action" variant="plain" />
         </DataListAction>
       </DataListItemRow>
     </DataListItem>

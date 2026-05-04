@@ -1,7 +1,10 @@
 import React from "react";
 import { Button } from "@patternfly/react-core";
 // In PF5, the next Modal implementation was accessed via /next path
-import { Modal, ModalVariant } from "@patternfly/react-core";
+import {
+	Modal,
+	ModalVariant
+} from '@patternfly/react-core/deprecated';
 
 export const TC049_ModalNext: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
