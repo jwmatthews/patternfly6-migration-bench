@@ -1,14 +1,23 @@
 import React from "react";
-import { Dropdown, KebabToggle } from "@patternfly/react-core/deprecated";
+import { Dropdown, MenuToggle, MenuToggleElement } from "@patternfly/react-core";
+import EllipsisVIcon from "@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon";
 
 export const TC036_KebabToggleRemoved: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <Dropdown
       isOpen={isOpen}
-      isPlain
-      toggle={<KebabToggle onToggle={() => setIsOpen(!isOpen)} />}
-      dropdownItems={[]}
+      onOpenChange={setIsOpen}
+      toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+        <MenuToggle
+          ref={toggleRef}
+          variant="plain"
+          onClick={() => setIsOpen(!isOpen)}
+          isExpanded={isOpen}
+        >
+          <EllipsisVIcon />
+        </MenuToggle>
+      )}
     />
   );
 };

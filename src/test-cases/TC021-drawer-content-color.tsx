@@ -3,11 +3,9 @@ import { Drawer, DrawerContent, DrawerContentBody, DrawerPanelContent } from "@p
 
 export const TC021_DrawerContentColor: React.FC = () => (
   <Drawer isExpanded>
-    <DrawerContent
-      colorVariant="no-background"
-      panelContent={<DrawerPanelContent>Panel</DrawerPanelContent>}
-    >
+    <DrawerContent>
       <DrawerContentBody>Main content</DrawerContentBody>
     </DrawerContent>
+    <DrawerPanelContent>Panel</DrawerPanelContent>
   </Drawer>
 );

@@ -1,13 +1,13 @@
 import React from "react";
-import { Select, SelectOption, SelectVariant } from "@patternfly/react-core/deprecated";
+import { Select, SelectOption } from "@patternfly/react-core";
 
 export const TC070_PopperAppendTo: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <Select
-      variant={SelectVariant.single}
+      variant="single"
       isOpen={isOpen}
-      onToggle={() => setIsOpen(!isOpen)}
+      onOpenChange={(isOpen) => setIsOpen(isOpen)}
       onSelect={() => setIsOpen(false)}
     >
       <SelectOption value="Option 1" />

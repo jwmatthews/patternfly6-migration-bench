@@ -3,14 +3,13 @@ import { Drawer, DrawerContent, DrawerContentBody, DrawerHead, DrawerPanelConten
 
 export const TC019_DrawerHasNoPadding: React.FC = () => (
   <Drawer isExpanded>
-    <DrawerContent panelContent={
-      <DrawerPanelContent>
-        <DrawerHead hasNoPadding>
-          Panel header with no padding
-        </DrawerHead>
-      </DrawerPanelContent>
-    }>
+    <DrawerContent>
       <DrawerContentBody>Main content</DrawerContentBody>
     </DrawerContent>
+    <DrawerPanelContent>
+      <DrawerHead>
+        Panel header with no padding
+      </DrawerHead>
+    </DrawerPanelContent>
   </Drawer>
 );

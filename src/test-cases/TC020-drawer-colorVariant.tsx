@@ -3,15 +3,11 @@ import { Drawer, DrawerContent, DrawerContentBody, DrawerPanelContent, DrawerSec
 
 export const TC020_DrawerColorVariant: React.FC = () => (
   <Drawer isExpanded>
-    <DrawerContent
-      colorVariant="light-200"
-      panelContent={
-        <DrawerPanelContent colorVariant="light-200">
-          <DrawerSection colorVariant="light-200">Panel content</DrawerSection>
-        </DrawerPanelContent>
-      }
-    >
+    <DrawerContent colorVariant="secondary">
       <DrawerContentBody>Main content</DrawerContentBody>
     </DrawerContent>
+    <DrawerPanelContent colorVariant="secondary">
+      <DrawerSection colorVariant="secondary">Panel content</DrawerSection>
+    </DrawerPanelContent>
   </Drawer>
 );

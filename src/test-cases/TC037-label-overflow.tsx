@@ -5,6 +5,6 @@ export const TC037_LabelOverflow: React.FC = () => (
   <LabelGroup>
     <Label>Label 1</Label>
     <Label>Label 2</Label>
-    <Label isOverflowLabel>3 more</Label>
+    <Label isClickable>3 more</Label>
   </LabelGroup>
 );

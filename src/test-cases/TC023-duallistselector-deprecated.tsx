@@ -4,6 +4,6 @@ import { DualListSelector } from "@patternfly/react-core";
 export const TC023_DualListSelectorDeprecated: React.FC = () => (
   <DualListSelector
     availableOptions={["Option 1", "Option 2", "Option 3"]}
-    chosenOptions={["Option 4"]}
+    hasAnimations={true}
   />
 );

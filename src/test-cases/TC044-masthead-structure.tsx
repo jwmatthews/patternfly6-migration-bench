@@ -1,5 +1,5 @@
 import React from "react";
-import { Brand, Button, Masthead, MastheadBrand, MastheadContent, MastheadMain, MastheadToggle } from "@patternfly/react-core";
+import { Brand, Button, Masthead, MastheadBrand, MastheadContent, MastheadLogo, MastheadMain, MastheadToggle } from "@patternfly/react-core";
 import { BarsIcon } from "@patternfly/react-icons";
 
 export const TC044_MastheadStructure: React.FC = () => (
@@ -9,7 +9,9 @@ export const TC044_MastheadStructure: React.FC = () => (
     </MastheadToggle>
     <MastheadMain>
       <MastheadBrand>
-        <Brand src="/logo.svg" alt="Logo" />
+        <MastheadLogo>
+          <Brand src="/logo.svg" alt="Logo" />
+        </MastheadLogo>
       </MastheadBrand>
     </MastheadMain>
     <MastheadContent>Content</MastheadContent>

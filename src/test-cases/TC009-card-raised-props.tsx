@@ -1,8 +1,14 @@
 import React from "react";
-import { Card, CardBody, CardTitle } from "@patternfly/react-core";
+import { Card, CardBody, CardHeader, CardTitle } from "@patternfly/react-core";
 
 export const TC009_CardRaisedProps: React.FC = () => (
-  <Card isSelectableRaised hasSelectableInput selectableInputAriaLabel="Select card" onSelectableInputChange={() => {}}>
+  <Card isSelectable>
+    <CardHeader
+      selectableActions={{
+        onChange: () => {},
+        selectableActionAriaLabel: "Select card",
+      }}
+    />
     <CardTitle>Selectable Card</CardTitle>
     <CardBody>Card content</CardBody>
   </Card>
