@@ -1,0 +1,784 @@
+{
+  "runDate": "2026-05-04",
+  "toolBranch": "semver/goose/050426-2003",
+  "baselineBranch": "pf-codemods-baseline",
+  "summary": {
+    "total": 85,
+    "correct": 54,
+    "partial": 22,
+    "wrong": 9,
+    "unchanged": 17,
+    "betterThanCodemods": 15,
+    "equalToCodemods": 33,
+    "worseThanCodemods": 18,
+    "codemodsFixableTotal": 66,
+    "codemodsFixableMatched": 40
+  },
+  "testCases": [
+    {
+      "id": "TC001",
+      "component": "Accordion content",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Tool correctly removed isHidden from AccordionContent and moved isExpanded from AccordionToggle to AccordionItem."
+    },
+    {
+      "id": "TC002",
+      "component": "Accordion item",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "Tool correctly moved isExpanded from AccordionToggle to AccordionItem. The expectedOutcome confirms this is the right action."
+    },
+    {
+      "id": "TC003",
+      "component": "Accordion toggle",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "isExpanded correctly moved from AccordionToggle to AccordionItem."
+    },
+    {
+      "id": "TC004",
+      "component": "All",
+      "fixedWithCodemods": true,
+      "correctness": 2,
+      "vsCodemods": "better",
+      "issues": ["Only removed data-codemods from Button element, left it on span element"],
+      "notes": "Partial cleanup of data-codemods attributes. Codemods left both pre-placed attributes unchanged. Per rubric, partial removal scores 2 but is better than codemods baseline."
+    },
+    {
+      "id": "TC005",
+      "component": "Avatar",
+      "fixedWithCodemods": true,
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": ["Removed border prop but did not add isBordered — lost bordered appearance"],
+      "notes": "Tool removed border='dark' but failed to add isBordered replacement. Codemods correctly maps to isBordered."
+    },
+    {
+      "id": "TC006",
+      "component": "Banner",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Tool replaced variant with color prop on all Banner instances. Identical to codemods output."
+    },
+    {
+      "id": "TC007",
+      "component": "Button",
+      "fixedWithCodemods": true,
+      "correctness": 0,
+      "vsCodemods": "worse",
+      "issues": ["File unchanged — tool did not move icon children to icon prop"],
+      "notes": "Tool left the file unchanged. Icons still passed as Button children. Codemods correctly migrates both icon-only and icon+text buttons."
+    },
+    {
+      "id": "TC008",
+      "component": "Button",
+      "fixedWithCodemods": true,
+      "correctness": 0,
+      "vsCodemods": "worse",
+      "issues": ["Replaced isActive with className='pf-m-active' instead of renaming to isClicked"],
+      "notes": "Tool used a CSS class hack instead of the correct PF6 prop rename (isClicked). Wrong approach."
+    },
+    {
+      "id": "TC009",
+      "component": "Card",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "better",
+      "issues": [],
+      "notes": "Tool replaced removed props with the new PF6 pattern: isSelectable on Card and selectableActions on CardHeader. Codemods only stripped the old props without adding replacements."
+    },
+    {
+      "id": "TC010",
+      "component": "Card",
+      "fixedWithCodemods": true,
+      "correctness": 0,
+      "vsCodemods": "worse",
+      "issues": ["Removed isClickable from Card (should be kept)", "Moved CardTitle outside CardHeader", "Left selectableActions unchanged"],
+      "notes": "Tool incorrectly removed isClickable from Card — this prop is needed for clickable card behavior in PF6."
+    },
+    {
+      "id": "TC011",
+      "component": "Checkbox",
+      "fixedWithCodemods": true,
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": ["Removed isLabelBeforeButton but did not add labelPosition='start'"],
+      "notes": "Tool deleted the prop without providing the replacement. Codemods correctly transforms to labelPosition='start'."
+    },
+    {
+      "id": "TC012",
+      "component": "Chip",
+      "fixedWithCodemods": true,
+      "correctness": 2,
+      "vsCodemods": "worse",
+      "issues": ["Missing variant='outline' on Label components"],
+      "notes": "Correctly replaced Chip/ChipGroup with Label/LabelGroup but missing variant='outline' to preserve Chip's default appearance."
+    },
+    {
+      "id": "TC013",
+      "component": "Chip",
+      "fixedWithCodemods": true,
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": ["Missing variant='outline'", "onClick kept as-is instead of converting to onClose"],
+      "notes": "Replaced Chip/ChipGroup with Label/LabelGroup but onClick should map to onClose for Label dismissal semantics."
+    },
+    {
+      "id": "TC014",
+      "component": "Color props",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly replaced cyan->teal and gold->yellow on both Banner and Label."
+    },
+    {
+      "id": "TC015",
+      "component": "Content header",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "better",
+      "issues": [],
+      "notes": "Correctly renamed ContentHeader to PageHeader. Cleaner than codemods which adds a data-codemods attribute."
+    },
+    {
+      "id": "TC016",
+      "component": "Data list action",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly removed isPlainButtonAction prop from DataListAction."
+    },
+    {
+      "id": "TC017",
+      "component": "Deprecated components",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "Excellent migration. Converted deprecated Dropdown/DropdownToggle/DropdownItem to modern PF6 Dropdown with MenuToggle. Codemods does not handle this."
+    },
+    {
+      "id": "TC018",
+      "component": "Drag drop",
+      "fixedWithCodemods": true,
+      "correctness": 2,
+      "vsCodemods": "better",
+      "issues": ["Used @patternfly/react-drag-drop DragDropSort — API mapping is approximate"],
+      "notes": "Tool went beyond codemods (which just moves imports to deprecated) by replacing with modern DragDropSort API. Forward-looking but approximate."
+    },
+    {
+      "id": "TC019",
+      "component": "Drawer",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly removed hasNoPadding prop from DrawerHead."
+    },
+    {
+      "id": "TC020",
+      "component": "Drawer",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly replaced colorVariant='light-200' with colorVariant='secondary' on all drawer components."
+    },
+    {
+      "id": "TC021",
+      "component": "Drawer content",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly removed colorVariant='no-background' from DrawerContent."
+    },
+    {
+      "id": "TC022",
+      "component": "Drawer head",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "File unchanged. No code changes needed for this markup change."
+    },
+    {
+      "id": "TC023",
+      "component": "Dual list selector",
+      "fixedWithCodemods": true,
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": ["Attempted full API migration but lost chosenOptions data", "Uses non-standard hasAnimations prop", "DualListSelectorControl components disabled with no logic"],
+      "notes": "Tool attempted the ambitious composable API rewrite but it's functionally incomplete. Codemods provides a safer /deprecated import."
+    },
+    {
+      "id": "TC024",
+      "component": "Dual list selector next",
+      "fixedWithCodemods": true,
+      "correctness": 1,
+      "vsCodemods": "better",
+      "issues": ["Same composable API issues as TC023", "Import path (@patternfly/react-core) is correct for /next promotion"],
+      "notes": "Import path is correct (codemods incorrectly moved to /deprecated) but API rewrite is incomplete."
+    },
+    {
+      "id": "TC025",
+      "component": "Duplicate imports",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "File unchanged on all branches. Test case design limitation — duplicate was pre-removed for compilation."
+    },
+    {
+      "id": "TC026",
+      "component": "Empty state",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly removed EmptyStateHeader/EmptyStateIcon imports, moved titleText and icon props to EmptyState."
+    },
+    {
+      "id": "TC027",
+      "component": "Empty state header",
+      "fixedWithCodemods": true,
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": ["EmptyStateIcon handled correctly", "Title component left as child instead of moving to titleText prop"],
+      "notes": "Partial migration — handled icon correctly but missed converting Title child to titleText prop."
+    },
+    {
+      "id": "TC028",
+      "component": "Error state",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly renamed errorTitle to titleText and errorDescription to bodyText."
+    },
+    {
+      "id": "TC029",
+      "component": "Form field group header title text object",
+      "fixedWithCodemods": true,
+      "correctness": 0,
+      "vsCodemods": "worse",
+      "issues": ["File unchanged despite fixedWithCodemods=true"],
+      "notes": "Tool made no changes. Codemods at least removed the unused import."
+    },
+    {
+      "id": "TC030",
+      "component": "Form group",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly renamed labelIcon prop to labelHelp on FormGroup."
+    },
+    {
+      "id": "TC031",
+      "component": "Helper text item",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly removed hasIcon and isDynamic props from HelperTextItem."
+    },
+    {
+      "id": "TC032",
+      "component": "Helper text item",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "File unchanged. Behavioral change only, no code changes needed."
+    },
+    {
+      "id": "TC033",
+      "component": "Invalid object",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "better",
+      "issues": [],
+      "notes": "Tool renamed InvalidObject to MissingPage, updated prop names, and cleaned imports. Cleaner than codemods (no data-codemods marker)."
+    },
+    {
+      "id": "TC034",
+      "component": "Jump links item",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "Tool added href='#section-1' to satisfy the new required prop. Codemods baseline only has a @ts-expect-error workaround."
+    },
+    {
+      "id": "TC035",
+      "component": "Jump links item",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "File unchanged. No code changes needed for markup change."
+    },
+    {
+      "id": "TC036",
+      "component": "Kebab toggle",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "better",
+      "issues": [],
+      "notes": "Tool fully migrated deprecated Dropdown/KebabToggle to new Dropdown with MenuToggle variant='plain' and EllipsisVIcon. Codemods baseline only had manual stubs."
+    },
+    {
+      "id": "TC037",
+      "component": "Label",
+      "fixedWithCodemods": true,
+      "correctness": 0,
+      "vsCodemods": "worse",
+      "issues": ["Changed isOverflowLabel to isClickable instead of variant='overflow'"],
+      "notes": "Incorrect migration. The PF6 replacement for isOverflowLabel is variant='overflow', not isClickable."
+    },
+    {
+      "id": "TC038",
+      "component": "Log snippet",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "better",
+      "issues": [],
+      "notes": "Correctly renamed leftBorderVariant to variant with proper AlertVariant import. More type-safe than codemods' 'as any' cast."
+    },
+    {
+      "id": "TC039",
+      "component": "Log viewer",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "File unchanged. Test case is a placeholder without actual CSS import to migrate."
+    },
+    {
+      "id": "TC040",
+      "component": "Login main footer links item",
+      "fixedWithCodemods": true,
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": ["Renamed to non-existent LoginFooterItem", "Did not restructure to use Button child"],
+      "notes": "Tool renamed to a non-existent component instead of restructuring to use Button as children per PF6 API."
+    },
+    {
+      "id": "TC041",
+      "component": "Login main header",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "File unchanged. Internal markup change, no code modifications needed."
+    },
+    {
+      "id": "TC042",
+      "component": "Masthead",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly restructured MastheadBrand/MastheadLogo wrapping."
+    },
+    {
+      "id": "TC043",
+      "component": "Masthead",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly removed backgroundColor prop from Masthead."
+    },
+    {
+      "id": "TC044",
+      "component": "Masthead",
+      "fixedWithCodemods": true,
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": ["MastheadToggle not moved inside MastheadMain as required"],
+      "notes": "Added MastheadLogo wrapping but missed the critical structural change: MastheadToggle must be inside MastheadMain."
+    },
+    {
+      "id": "TC045",
+      "component": "Menu item action",
+      "fixedWithCodemods": false,
+      "correctness": 0,
+      "vsCodemods": "n/a",
+      "issues": ["Removed MenuContent wrapper unnecessarily", "Removed MenuContent from imports"],
+      "notes": "Tool incorrectly removed MenuContent wrapper. No code changes were needed for this internal markup change."
+    },
+    {
+      "id": "TC046",
+      "component": "Menu toggle",
+      "fixedWithCodemods": true,
+      "correctness": 0,
+      "vsCodemods": "equal",
+      "issues": ["Icon not moved from children to icon prop"],
+      "notes": "File unchanged. Both tool and codemods failed to move icon from children to icon prop."
+    },
+    {
+      "id": "TC047",
+      "component": "Missing page",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "better",
+      "issues": [],
+      "notes": "Correctly renamed InvalidObject to MissingPage with updated props. Cleaner output than codemods (no data-codemods)."
+    },
+    {
+      "id": "TC048",
+      "component": "Modal",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "better",
+      "issues": [],
+      "notes": "Migrated to new Modal API with ModalHeader/ModalBody/ModalFooter. Codemods only moved imports to /deprecated."
+    },
+    {
+      "id": "TC049",
+      "component": "Modal next",
+      "fixedWithCodemods": true,
+      "correctness": 2,
+      "vsCodemods": "better",
+      "issues": ["Restructured to new Modal API beyond the minimal fix required"],
+      "notes": "Import path kept at @patternfly/react-core (correct). Codemods incorrectly moved to /deprecated. Tool's restructure is valid but more than needed."
+    },
+    {
+      "id": "TC050",
+      "component": "Multi content card",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly removed leftBorderVariant and withHeaderBorder props."
+    },
+    {
+      "id": "TC051",
+      "component": "Nav",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly replaced variant='tertiary' with variant='horizontal-subnav'."
+    },
+    {
+      "id": "TC052",
+      "component": "Nav",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly removed theme prop from Nav."
+    },
+    {
+      "id": "TC053",
+      "component": "Nav item",
+      "fixedWithCodemods": true,
+      "correctness": 1,
+      "vsCodemods": "equal",
+      "issues": ["Did not move HomeIcon to the icon prop on NavItem"],
+      "notes": "Removed hasNavLinkWrapper (correct) but did not move icon to icon prop. Codemods also missed this."
+    },
+    {
+      "id": "TC054",
+      "component": "Not authorized",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "better",
+      "issues": [],
+      "notes": "Renamed props and component (NotAuthorized to UnauthorizedAccess). Cleaner than codemods (no data-codemods)."
+    },
+    {
+      "id": "TC055",
+      "component": "Notification badge",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "File unchanged. Internal markup change, no code modifications needed."
+    },
+    {
+      "id": "TC056",
+      "component": "Notification drawer header",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "File unchanged. Internal markup change, no code modifications needed."
+    },
+    {
+      "id": "TC057",
+      "component": "Page",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly renamed header prop to masthead on Page."
+    },
+    {
+      "id": "TC058",
+      "component": "Page",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly renamed isTertiaryNavGrouped to isHorizontalSubnavGrouped."
+    },
+    {
+      "id": "TC059",
+      "component": "Page",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly renamed isTertiaryNavWidthLimited to isHorizontalSubnavWidthLimited."
+    },
+    {
+      "id": "TC060",
+      "component": "Page",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly renamed tertiaryNav to horizontalSubnav. Also updated Nav variant."
+    },
+    {
+      "id": "TC061",
+      "component": "Page",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "File unchanged. No code changes strictly needed for this markup change."
+    },
+    {
+      "id": "TC062",
+      "component": "Page breadcrumb and section",
+      "fixedWithCodemods": true,
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": ["Did not add hasBodyWrapper={false}", "Mapped variant='light' to 'secondary' instead of 'default'", "Unnecessary Page wrapper added"],
+      "notes": "Missed the primary fix (hasBodyWrapper) and got variant mapping wrong (light->secondary instead of light->default)."
+    },
+    {
+      "id": "TC063",
+      "component": "Page header tools item",
+      "fixedWithCodemods": true,
+      "correctness": 0,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "File unchanged. Test case design limitation — uses placeholder div. Both tool and codemods score equally."
+    },
+    {
+      "id": "TC064",
+      "component": "Page navigation",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "better",
+      "issues": [],
+      "notes": "Correctly removed PageNavigation and placed Nav directly as Page child. Cleaner output than codemods."
+    },
+    {
+      "id": "TC065",
+      "component": "Page section",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly removed type='nav' from PageSection."
+    },
+    {
+      "id": "TC066",
+      "component": "Page section",
+      "fixedWithCodemods": true,
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": ["variant='light' mapped to 'secondary' instead of 'default'"],
+      "notes": "Correctly mapped dark/darker to secondary but incorrectly mapped light to secondary (should be default)."
+    },
+    {
+      "id": "TC067",
+      "component": "Page section",
+      "fixedWithCodemods": false,
+      "correctness": 2,
+      "vsCodemods": "n/a",
+      "issues": ["variant='light' mapped to 'secondary' instead of 'default'"],
+      "notes": "Updated variant (acceptable per expectedOutcome) but the specific mapping is incorrect."
+    },
+    {
+      "id": "TC068",
+      "component": "Page sidebar",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly removed theme='dark' prop from PageSidebar."
+    },
+    {
+      "id": "TC069",
+      "component": "Pagination",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "File unchanged. Internal markup change, no code modifications needed."
+    },
+    {
+      "id": "TC070",
+      "component": "Popper",
+      "fixedWithCodemods": false,
+      "correctness": 2,
+      "vsCodemods": "n/a",
+      "issues": ["Rewrote entire Select from deprecated API to new PF6 Select — beyond scope of TC070"],
+      "notes": "No changes needed for appendTo behavior. Tool rewrote the deprecated Select which is valid PF6 but out of scope."
+    },
+    {
+      "id": "TC071",
+      "component": "Simple file upload",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "File unchanged. Original code does not use aria-describedby, so no changes needed."
+    },
+    {
+      "id": "TC072",
+      "component": "Slider step",
+      "fixedWithCodemods": false,
+      "correctness": 1,
+      "vsCodemods": "n/a",
+      "issues": ["Updated v5->v6 prefix but kept '--Left' instead of '--InsetInlineStart'", "CSS class selector not fully updated"],
+      "notes": "Partial fix — updated prefix but missed the key rename from --Left to --InsetInlineStart."
+    },
+    {
+      "id": "TC073",
+      "component": "Switch",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly removed labelOff prop from Switch."
+    },
+    {
+      "id": "TC074",
+      "component": "Tabs",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly renamed isSecondary to isSubtab."
+    },
+    {
+      "id": "TC075",
+      "component": "Tabs",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly replaced variant='light300' with variant='secondary'."
+    },
+    {
+      "id": "TC076",
+      "component": "Tabs",
+      "fixedWithCodemods": false,
+      "correctness": 3,
+      "vsCodemods": "n/a",
+      "issues": [],
+      "notes": "File unchanged. Internal markup change, no code modifications needed."
+    },
+    {
+      "id": "TC077",
+      "component": "Text",
+      "fixedWithCodemods": true,
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": ["TextList replaced with bare <Content> instead of <Content component='ul'>", "TextListItem replaced with bare <Content> instead of <Content component='li'>"],
+      "notes": "Correctly replaced Text/TextContent with Content but lost semantic HTML for TextList/TextListItem (ul/li elements)."
+    },
+    {
+      "id": "TC078",
+      "component": "Th",
+      "fixedWithCodemods": false,
+      "correctness": 1,
+      "vsCodemods": "n/a",
+      "issues": ["Updated v5->v6 prefix but kept '--Left' and '--Right' instead of '--InsetInlineStart'/'--InsetInlineEnd'"],
+      "notes": "Partial fix — updated prefix but missed the key property name renames."
+    },
+    {
+      "id": "TC079",
+      "component": "Tile",
+      "fixedWithCodemods": true,
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": ["Replaced Tile with Card but Card doesn't accept 'title' prop directly", "Missing CardTitle/CardHeader subcomponents"],
+      "notes": "Chose to replace Tile with Card (valid approach) but the Card usage is not idiomatic — missing proper subcomponents."
+    },
+    {
+      "id": "TC080",
+      "component": "Tokens",
+      "fixedWithCodemods": true,
+      "correctness": 2,
+      "vsCodemods": "better",
+      "issues": ["global_Color_dark_100 mapped to t_global_text_color_100 — plausible but unverified"],
+      "notes": "Correctly added t_ prefix to spacer token. Color token mapping is reasonable (codemods used a placeholder t_temp_dev_tbd)."
+    },
+    {
+      "id": "TC081",
+      "component": "Tokens",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "better",
+      "issues": [],
+      "notes": "Correctly mapped CSS tokens to PF6 design tokens. Codemods left CSS file unchanged."
+    },
+    {
+      "id": "TC082",
+      "component": "Toolbar",
+      "fixedWithCodemods": true,
+      "correctness": 0,
+      "vsCodemods": "worse",
+      "issues": ["Replaced usePageInsets with non-existent hasNoPadding prop"],
+      "notes": "Incorrectly replaced removed prop with a non-existent prop. Should have simply removed usePageInsets."
+    },
+    {
+      "id": "TC083",
+      "component": "Toolbar",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly renamed all chip-based props to label-based equivalents."
+    },
+    {
+      "id": "TC084",
+      "component": "Toolbar",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "File unchanged by both tool and codemods. Test case doesn't use the interfaces directly."
+    },
+    {
+      "id": "TC085",
+      "component": "Toolbar",
+      "fixedWithCodemods": true,
+      "correctness": 3,
+      "vsCodemods": "equal",
+      "issues": [],
+      "notes": "Correctly replaced spacer prop with gap on ToolbarGroup and ToolbarItem."
+    }
+  ]
+}
