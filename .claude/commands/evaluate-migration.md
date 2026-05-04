@@ -61,9 +61,9 @@ Use parallel subagents in batches of ~10 test cases for speed. For each test cas
 
 ### Step 5: Aggregate results
 
-Create the results directory: `mkdir -p results/$(date +%Y-%m-%d)`
+Create the results directory: `mkdir -p results/$(date +%Y-%m-%d)-<tool-branch-slug>`
 
-Write `results/<date>/scorecard.json`:
+Write `results/<date>-<branch>/scorecard.json`:
 ```json
 {
   "runDate": "<date>",
@@ -97,7 +97,7 @@ Write `results/<date>/scorecard.json`:
 
 ### Step 6: Generate markdown report
 
-Write `results/<date>/report.md` with:
+Write `results/<date>-<branch>/report.md` with:
 
 1. **Summary table** — overall scores
 2. **Where tool beats pf-codemods** — unique value (vsCodemods == "better")
