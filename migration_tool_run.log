@@ -1,0 +1,79 @@
+cat ./jwm_run_container.sh
+
+export IMAGE="pf-tools-from533-20260504:latest"
+
+export GCP_PROJECT_ID="$ANTHROPIC_VERTEX_PROJECT_ID"
+export GCP_LOCATION="$CLOUD_ML_REGION"
+time ./run_container.sh --migrate patternfly6-migration-bench --base-branch 2026_05_04a_semver_approach --image ${IMAGE} 2>&1 | tee run_container_pf_tools_from_533_2026_05_04a.log
+
+
+
+$ time ./jwm_run_container.sh
+[INFO]  Container runtime: podman
+[INFO]  Mode: mount
+[INFO]  Image: pf-tools-from533-20260504:latest
+[INFO]  App: /Users/jmatthews/synced/semver-ansible/pf-tools-builder/patternfly6-migration-bench
+[INFO]  Goose config: using default (baked into image)
+[INFO]  GCP credentials: /Users/jmatthews/.config/gcloud
+[INFO]  Mounting /Users/jmatthews/synced/semver-ansible/pf-tools-builder/patternfly6-migration-bench at /workspace
+[INFO]  Container: bac801c7f3ee9642ee00bb678330baabd835de6f0d9054e544d7a7caa70c6a1c
+[INFO]  Using pre-packaged rules
+[INFO]  Base branch: 2026_05_04a_semver_approach
+[INFO]  Creating migration branch: semver/goose/050426-2003
+Already on '2026_05_04a_semver_approach'
+Switched to a new branch 'semver/goose/050426-2003'
+[INFO]  Project:   /workspace
+[INFO]  Branch:    semver/goose/050426-2003
+[INFO]  Rules:     /opt/patternfly-tools/rules
+[INFO]  Agent:     goose
+[INFO]  Temp dir:  /tmp/pf-migrate.RVSv2l
+
+[STEP 1/8] Generating provider settings
+
+[STEP 2/8] Starting frontend-analyzer-provider
+[INFO]  Running '/opt/patternfly-tools/bin/frontend-analyzer-provider serve -p 9002'
+[INFO]  frontend-analyzer-provider started (PID 16, port 9002)
+
+[STEP 3/8] Running kantra analysis
+[INFO]  Running '/opt/patternfly-tools/.kantra/kantra analyze --provider java --input /workspace --output /tmp/pf-migrate.RVSv2l/kantra --rules /opt/patternfly-tools/rules/semver_rules --override-provider-settings /tmp/pf-migrate.RVSv2l/provider_settings.json --enable-default-rulesets=false --run-local --overwrite'
+[INFO]  Follow logs: tail -f /opt/patternfly-tools/logs/20260504T200346/kantra.log
+[INFO]  Kantra analysis complete (0m59s)
+
+[STEP 4/8] Stopping frontend-analyzer-provider
+[INFO]  frontend-analyzer-provider stopped
+
+[STEP 5/8] Converting kantra output to JSON
+[INFO]  Converted: /tmp/pf-migrate.RVSv2l/kantra/output.json
+
+[STEP 6/8] Applying pattern-based fixes
+[INFO]  Running 'unbuffer /opt/patternfly-tools/bin/fix-engine-cli fix /workspace --strategies /opt/patternfly-tools/rules/fix-guidance/fix-strategies.json --input /tmp/pf-migrate.RVSv2l/kantra/output.json'
+[INFO]  Follow logs: tail -f /opt/patternfly-tools/logs/20260504T200346/fix-pattern.log
+
+[STEP 7/8] Applying LLM-based fixes
+[INFO]  Running 'unbuffer /opt/patternfly-tools/bin/fix-engine-cli fix /workspace --input /tmp/pf-migrate.RVSv2l/kantra/output.json --llm-provider goose --strategies /opt/patternfly-tools/rules/fix-guidance/fix-strategies.json'
+[INFO]  Pattern-based fixes complete (0m01s)
+[INFO]  Follow logs: tail -f /opt/patternfly-tools/logs/20260504T200346/fix-llm.log
+[INFO]  LLM-based fixes complete (15m25s)
+[INFO]  Committed automated fixes
+
+[STEP 8/8] Running goose for remaining fixes
+[INFO]  Running 'env GOOSE_MODE=auto goose run -i /opt/patternfly-tools/prompt.md'
+[INFO]  Follow logs: tail -f /opt/patternfly-tools/logs/20260504T200346/agent-goose.log
+[INFO]  Goose agent complete (6m18s)
+[INFO]  Committed AI agent fixes
+[INFO]  Stats written to: /workspace/.pf-migration/stats.json
+
+[INFO]  Migration complete!
+[INFO]  Project: /workspace
+[INFO]  Kantra output: /tmp/pf-migrate.RVSv2l/kantra/
+[INFO]  Logs: /opt/patternfly-tools/logs/20260504T200346/
+[INFO]  Total runtime: 22m48s
+[INFO]  Results in: /Users/jmatthews/synced/semver-ansible/pf-tools-builder/patternfly6-migration-bench
+[INFO]  Logs in: /Users/jmatthews/synced/semver-ansible/pf-tools-builder/.pf-migration-logs/
+
+real    22m49.250s
+user    0m0.134s
+sys     0m0.147s
+./jwm_run_container.sh  0.14s user 0.15s system 0% cpu 22:49.26 total
+
+
