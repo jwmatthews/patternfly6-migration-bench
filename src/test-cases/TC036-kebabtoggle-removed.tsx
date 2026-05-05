@@ -20,7 +20,7 @@ export const TC036_KebabToggleRemoved: React.FC = () => {
         </MenuToggle>
       )}
     >
-      <DropdownList />
+      <DropdownList>{null}</DropdownList>
     </Dropdown>
   );
 };
