@@ -1,5 +1,5 @@
 import React from "react";
-import { DualListSelector } from "@patternfly/react-core";
+import { DualListSelector } from "@patternfly/react-core/deprecated";
 
 export const TC023_DualListSelectorDeprecated: React.FC = () => (
   <DualListSelector

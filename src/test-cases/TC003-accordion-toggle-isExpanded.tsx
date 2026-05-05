@@ -6,7 +6,7 @@ export const TC003_AccordionToggleIsExpanded: React.FC = () => {
   return (
     <Accordion>
       <AccordionItem>
-        <AccordionToggle onClick={() => setExpanded(!expanded)} isExpanded={expanded} id="tc003-toggle">
+        <AccordionToggle onClick={() => setExpanded(!expanded)} id="tc003-toggle">
           Toggle
         </AccordionToggle>
         <AccordionContent>Content</AccordionContent>
