@@ -1,10 +1,10 @@
 import React from "react";
-import { PageSection } from "@patternfly/react-core";
+import { Page, PageSection } from "@patternfly/react-core";
 
 export const TC066_PageSectionVariant: React.FC = () => (
-  <div>
-    <PageSection variant="light">Light section</PageSection>
-    <PageSection variant="dark">Dark section</PageSection>
-    <PageSection variant="darker">Darker section</PageSection>
-  </div>
+  <Page>
+    <PageSection variant="secondary">Light section</PageSection>
+    <PageSection variant="secondary">Dark section</PageSection>
+    <PageSection variant="secondary">Darker section</PageSection>
+  </Page>
 );

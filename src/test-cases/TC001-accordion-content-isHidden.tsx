@@ -6,10 +6,10 @@ export const TC001_AccordionContentIsHidden: React.FC = () => {
   return (
     <Accordion>
       <AccordionItem>
-        <AccordionToggle onClick={() => setExpanded(!expanded)} isExpanded={expanded} id="tc001-toggle">
+        <AccordionToggle onClick={() => setExpanded(!expanded)} id="tc001-toggle">
           Item One
         </AccordionToggle>
-        <AccordionContent isHidden={!expanded}>
+        <AccordionContent>
           Content for item one.
         </AccordionContent>
       </AccordionItem>
