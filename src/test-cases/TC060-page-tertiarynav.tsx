@@ -11,7 +11,7 @@ const tertiaryNav = (
 );
 
 export const TC060_PageTertiaryNav: React.FC = () => (
-  <Page horizontalSubnav={horizontalSubnav}>
+  <Page horizontalSubnav={tertiaryNav}>
     <PageSection>Content</PageSection>
   </Page>
 );

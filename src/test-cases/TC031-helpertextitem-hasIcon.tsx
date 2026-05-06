@@ -3,10 +3,10 @@ import { HelperText, HelperTextItem } from "@patternfly/react-core";
 
 export const TC031_HelperTextItemHasIcon: React.FC = () => (
   <HelperText>
-    <HelperTextItem isDynamic variant="success">
+    <HelperTextItem variant="success">
       Validation passed
     </HelperTextItem>
-    <HelperTextItem isDynamic variant="error">
+    <HelperTextItem variant="error">
       Validation failed
     </HelperTextItem>
   </HelperText>

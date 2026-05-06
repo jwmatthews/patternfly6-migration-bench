@@ -1,6 +1,6 @@
 import React from "react";
-import { Dropdown, DropdownList, MenuToggle } from "@patternfly/react-core";
-import EllipsisVIcon from "@patternfly/react-icons/dist/esm/icons/EllipsisVIcon";
+import { Dropdown, DropdownItem, DropdownList, MenuToggle } from "@patternfly/react-core";
+import EllipsisVIcon from "@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon";
 
 export const TC036_KebabToggleRemoved: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -20,7 +20,9 @@ export const TC036_KebabToggleRemoved: React.FC = () => {
         </MenuToggle>
       )}
     >
-      <DropdownList />
+      <DropdownList>
+          <DropdownItem>Action</DropdownItem>
+        </DropdownList>
     </Dropdown>
   );
 };
