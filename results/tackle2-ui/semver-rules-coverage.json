@@ -1,0 +1,1346 @@
+{
+  "analysisDate": "2026-05-14",
+  "rulesDir": "results/2026-05-05-semver-goose-050526-1644/semver",
+  "totalChanges": 85,
+  "coverage": {
+    "fullyCovered": 55,
+    "ruleOnly": 1,
+    "wrongGuidance": 3,
+    "missingRule": 15,
+    "inherentGap": 11
+  },
+  "coverageByFrequency": {
+    "fullyCovered": 736,
+    "ruleOnly": 6,
+    "wrongGuidance": 8,
+    "missingRule": 56,
+    "inherentGap": 140
+  },
+  "changes": [
+    {
+      "changeId": "A01",
+      "component": "Text/TextContent",
+      "category": "component-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-text-text-d-ts-textvariants-removed",
+        "semver-packages-react-core-src-components-text-text-d-ts-textprops-removed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-text-text-d-ts-textvariants-removed",
+      "fixStrategyCorrect": true,
+      "notes": "TextVariants\u2192ContentVariants detected with correct LlmAssisted mapping. TextProps removed also detected.",
+      "frequency": 270,
+      "filesAffected": 40,
+      "before": "<Text>, <TextContent>",
+      "after": "<Content>"
+    },
+    {
+      "changeId": "A02",
+      "component": "TextVariants",
+      "category": "component-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-text-text-d-ts-textvariants-removed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-text-text-d-ts-textvariants-removed",
+      "fixStrategyCorrect": true,
+      "notes": "TextVariants\u2192ContentVariants with member_mappings for all variants.",
+      "frequency": 27,
+      "filesAffected": 5,
+      "before": "TextVariants.p, .h3, .small, .a",
+      "after": "ContentVariants.p, .h3, .small, .a"
+    },
+    {
+      "changeId": "A03",
+      "component": "TextList/TextListItem",
+      "category": "component-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-text-textlist-d-ts-textlistvariants-removed",
+        "semver-packages-react-core-src-components-text-textlistitem-d-ts-textlistitemvariants-removed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-text-textlist-d-ts-textlistvariants-removed",
+      "fixStrategyCorrect": true,
+      "notes": "TextListVariants\u2192ContentVariants detected with correct mapping.",
+      "frequency": 3,
+      "filesAffected": 1,
+      "before": "<TextList component=\"dl\">, <TextListItem component=\"dt\">",
+      "after": "<Content component=\"dl\">, <Content component=\"dt\">"
+    },
+    {
+      "changeId": "A04",
+      "component": "ToolbarChip",
+      "category": "interface-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-toolbarchip-component-import-deprecated"
+      ],
+      "fixStrategyKey": "semver-toolbarchip-component-import-deprecated",
+      "fixStrategyCorrect": false,
+      "notes": "Rule detects ToolbarChip but fix strategy is LlmAssisted with no from/to. Actual: ToolbarChip\u2192ToolbarLabel.",
+      "frequency": 7,
+      "filesAffected": 4,
+      "before": "ToolbarChip",
+      "after": "ToolbarLabel"
+    },
+    {
+      "changeId": "A05",
+      "component": "ToolbarChipGroup",
+      "category": "interface-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-toolbarchipgroup-component-import-deprecated"
+      ],
+      "fixStrategyKey": "semver-toolbarchipgroup-component-import-deprecated",
+      "fixStrategyCorrect": false,
+      "notes": "Rule detects ToolbarChipGroup but fix strategy has no specific from/to guidance.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "ToolbarChipGroup",
+      "after": "ToolbarLabelGroup"
+    },
+    {
+      "changeId": "A06",
+      "component": "Chip",
+      "category": "component-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-chip-chip-d-ts-chip-signature-changed",
+        "sd-deprecated-moved-chip-to-deprecated"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-chip-chip-d-ts-chip-signature-changed",
+      "fixStrategyCorrect": true,
+      "notes": "Chip\u2192Label detected with LlmAssisted strategy. variant=\"outline\" must be inferred by LLM.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "<Chip>",
+      "after": "<Label variant=\"outline\">"
+    },
+    {
+      "changeId": "A07",
+      "component": "ChipGroup",
+      "category": "component-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-chip-chipgroup-d-ts-chipgroup-signature-changed",
+        "sd-deprecated-moved-chipgroup-to-deprecated"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-chip-chipgroup-d-ts-chipgroup-signature-changed",
+      "fixStrategyCorrect": true,
+      "notes": "ChipGroup\u2192LabelGroup detected with LlmAssisted strategy.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "<ChipGroup>",
+      "after": "<LabelGroup>"
+    },
+    {
+      "changeId": "A08",
+      "component": "MastheadBrand",
+      "category": "component-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-masthead-mastheadbrand-mastheadbrandprops-d-ts-mastheadbrand-component-removed",
+        "sd-cf-masthead-brand-in-main"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-masthead-mastheadbrand-mastheadbrandprops-d-ts-mastheadbrand-component-removed",
+      "fixStrategyCorrect": true,
+      "notes": "MastheadBrand removal + SD conformance rules guide new composition.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "<MastheadBrand> (old)",
+      "after": "<MastheadLogo> + new <MastheadBrand> wrapper"
+    },
+    {
+      "changeId": "B01",
+      "component": "Modal",
+      "category": "import-path-change",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-modal-component-import-deprecated"
+      ],
+      "fixStrategyKey": "semver-modal-component-import-deprecated",
+      "fixStrategyCorrect": true,
+      "notes": "Modal\u2192deprecated import path detected with LlmAssisted strategy.",
+      "frequency": 31,
+      "filesAffected": 31,
+      "before": "import { Modal } from '@patternfly/react-core'",
+      "after": "import { Modal } from '@patternfly/react-core/deprecated'"
+    },
+    {
+      "changeId": "B02",
+      "component": "Charts",
+      "category": "import-path-change",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-charts-src-components-chartdonut-chartdonut-d-ts-chartdonut-renamed"
+      ],
+      "fixStrategyKey": "semver-packages-react-charts-src-components-chartdonut-chartdonut-d-ts-chartdonut-renamed",
+      "fixStrategyCorrect": true,
+      "notes": "ImportPathChange from @patternfly/react-charts to /victory. 34 chart component rules.",
+      "frequency": 4,
+      "filesAffected": 4,
+      "before": "import { ChartDonut } from '@patternfly/react-charts'",
+      "after": "import { ChartDonut } from '@patternfly/react-charts/victory'"
+    },
+    {
+      "changeId": "B03",
+      "component": "DualListSelector",
+      "category": "import-path-change",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-duallistselector-component-import-deprecated"
+      ],
+      "fixStrategyKey": "semver-duallistselector-component-import-deprecated",
+      "fixStrategyCorrect": true,
+      "notes": "DualListSelector\u2192deprecated import path detected.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "import { DualListSelector } from '@patternfly/react-core'",
+      "after": "import { DualListSelector } from '@patternfly/react-core/deprecated'"
+    },
+    {
+      "changeId": "C01",
+      "component": "FormGroup",
+      "category": "prop-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-form-formgroup-formgroupprops-d-ts-formgroup-labelicon-renamed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-form-formgroup-formgroupprops-d-ts-formgroup-labelicon-renamed",
+      "fixStrategyCorrect": true,
+      "notes": "FormGroup labelIcon\u2192labelHelp detected with Rename strategy.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "labelIcon={...}",
+      "after": "labelHelp={...}"
+    },
+    {
+      "changeId": "C02",
+      "component": "Page",
+      "category": "prop-rename",
+      "coverageStatus": "wrong-guidance",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-page-page-pageprops-d-ts-page-header-renamed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-page-page-pageprops-d-ts-page-header-renamed",
+      "fixStrategyCorrect": false,
+      "notes": "Rule detects correctly. Fix strategy uses ImportPathChange (should be Rename). from='header' to='masthead' values correct but strategy type is wrong.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "header={...}",
+      "after": "masthead={...}"
+    },
+    {
+      "changeId": "C03",
+      "component": "ToolbarFilter",
+      "category": "prop-rename",
+      "coverageStatus": "wrong-guidance",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-toolbar-toolbarfilter-toolbarfilterprops-d-ts-toolbarfilter-chips-renamed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-toolbar-toolbarfilter-toolbarfilterprops-d-ts-toolbarfilter-chips-renamed",
+      "fixStrategyCorrect": false,
+      "notes": "Rule detects correctly. Fix strategy uses ImportPathChange (should be Rename). from='chips' to='labels' values correct but strategy type wrong.",
+      "frequency": 5,
+      "filesAffected": 4,
+      "before": "chips={...}",
+      "after": "labels={...}"
+    },
+    {
+      "changeId": "C04",
+      "component": "ToolbarFilter",
+      "category": "prop-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-toolbar-toolbarfilter-toolbarfilterprops-d-ts-toolbarfilter-deletechip-renamed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-toolbar-toolbarfilter-toolbarfilterprops-d-ts-toolbarfilter-deletechip-renamed",
+      "fixStrategyCorrect": true,
+      "notes": "Correct Rename strategy: deleteChip\u2192deleteLabel.",
+      "frequency": 5,
+      "filesAffected": 4,
+      "before": "deleteChip={...}",
+      "after": "deleteLabel={...}"
+    },
+    {
+      "changeId": "C05",
+      "component": "ToolbarFilter",
+      "category": "prop-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-toolbar-toolbarfilter-toolbarfilterprops-d-ts-toolbarfilter-deletechipgroup-renamed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-toolbar-toolbarfilter-toolbarfilterprops-d-ts-toolbarfilter-deletechipgroup-renamed",
+      "fixStrategyCorrect": true,
+      "notes": "Correct Rename strategy: deleteChipGroup\u2192deleteLabelGroup.",
+      "frequency": 3,
+      "filesAffected": 2,
+      "before": "deleteChipGroup={...}",
+      "after": "deleteLabelGroup={...}"
+    },
+    {
+      "changeId": "C06",
+      "component": "MenuToggle",
+      "category": "prop-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-menutoggle-menutoggle-menutoggleprops-d-ts-menutoggle-splitbuttonoptions-signature-changed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-menutoggle-menutoggle-menutoggleprops-d-ts-menutoggle-splitbuttonoptions-signature-changed",
+      "fixStrategyCorrect": true,
+      "notes": "splitButtonOptions type change detected with LlmAssisted.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "splitButtonOptions={{ items: [...] }}",
+      "after": "splitButtonItems={[...]}"
+    },
+    {
+      "changeId": "C07",
+      "component": "ToolbarGroup",
+      "category": "prop-rename",
+      "coverageStatus": "wrong-guidance",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-toolbar-toolbargroup-toolbargroupprops-d-ts-toolbargroup-spacer-renamed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-toolbar-toolbargroup-toolbargroupprops-d-ts-toolbargroup-spacer-renamed",
+      "fixStrategyCorrect": false,
+      "notes": "Rule detects correctly. Fix strategy uses ImportPathChange (should be Rename). from='spacer' to='gap' values correct but strategy type wrong.",
+      "frequency": 2,
+      "filesAffected": 1,
+      "before": "spacer={{ default: 'spacerNone' }}",
+      "after": "gap={{ default: 'gapNone' }}"
+    },
+    {
+      "changeId": "C08",
+      "component": "Label (was Chip)",
+      "category": "prop-rename",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "No rule for Chip onClick\u2192onClose rename. Chip\u2192Label rules exist but don't address this prop mapping.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "onClick={...}",
+      "after": "onClose={...}"
+    },
+    {
+      "changeId": "C09",
+      "component": "LabelGroup",
+      "category": "prop-rename",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "No rule for LabelGroup ouiaId\u2192data-ouia-component-id. Only MenuToggle-specific ouia rules exist.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "ouiaId={...}",
+      "after": "data-ouia-component-id={...}"
+    },
+    {
+      "changeId": "C10",
+      "component": "PageSection",
+      "category": "prop-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-page-pagesection-pagesectionprops-variant-d-ts-pagesection-variant-variant-removed-group-3"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-page-pagesection-pagesectionprops-variant-d-ts-pagesection-variant-variant-removed-group-3",
+      "fixStrategyCorrect": true,
+      "notes": "PageSection variant enum removal detected.",
+      "frequency": 10,
+      "filesAffected": 10,
+      "before": "PageSectionVariants.light (enum)",
+      "after": "removed \u2014 use hasBodyWrapper"
+    },
+    {
+      "changeId": "D01",
+      "component": "PageSidebar",
+      "category": "prop-removal",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-page-pagesidebar-pagesidebarprops-d-ts-pagesidebar-theme-removed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-page-pagesidebar-pagesidebarprops-d-ts-pagesidebar-theme-removed",
+      "fixStrategyCorrect": true,
+      "notes": "RemoveProp strategy.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "theme={LayoutTheme}",
+      "after": "removed"
+    },
+    {
+      "changeId": "D02",
+      "component": "Nav",
+      "category": "prop-removal",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-nav-nav-navprops-d-ts-nav-theme-removed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-nav-nav-navprops-d-ts-nav-theme-removed",
+      "fixStrategyCorrect": true,
+      "notes": "RemoveProp strategy.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "theme={LayoutTheme}",
+      "after": "removed"
+    },
+    {
+      "changeId": "D03",
+      "component": "Card",
+      "category": "prop-removal",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "No rule for Card isFlat prop removal. Card API rules exist for other props but not isFlat.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "isFlat",
+      "after": "removed"
+    },
+    {
+      "changeId": "D04",
+      "component": "ToolbarToggleGroup",
+      "category": "prop-removal",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-toolbar-toolbartogglegroup-toolbartogglegroupprops-d-ts-toolbartogglegroup-spaceitems-removed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-toolbar-toolbartogglegroup-toolbartogglegroupprops-d-ts-toolbartogglegroup-spaceitems-removed",
+      "fixStrategyCorrect": true,
+      "notes": "RemoveProp strategy.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "spaceItems={{ default: 'spaceItemsMd' }}",
+      "after": "removed"
+    },
+    {
+      "changeId": "D05",
+      "component": "ToolbarItem",
+      "category": "prop-removal",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-toolbar-toolbaritem-toolbaritemprops-d-ts-toolbaritem-widths-removed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-toolbar-toolbaritem-toolbaritemprops-d-ts-toolbaritem-widths-removed",
+      "fixStrategyCorrect": true,
+      "notes": "RemoveProp strategy.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "widths={{ default: '300px' }}",
+      "after": "removed"
+    },
+    {
+      "changeId": "E01",
+      "component": "PageSection",
+      "category": "prop-value-change",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-page-pagesection-pagesectionprops-variant-d-ts-pagesection-variant-variant-removed-group-3"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-page-pagesection-pagesectionprops-variant-d-ts-pagesection-variant-variant-removed-group-3",
+      "fixStrategyCorrect": true,
+      "notes": "PageSection variant='light' removal detected.",
+      "frequency": 35,
+      "filesAffected": 20,
+      "before": "variant='light' / PageSectionVariants.light",
+      "after": "hasBodyWrapper={false}"
+    },
+    {
+      "changeId": "E02",
+      "component": "ToolbarGroup",
+      "category": "prop-value-change",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-toolbar-toolbargroup-toolbargroupvariant-d-ts-toolbargroupvariant-button-group-removed-group-2"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-toolbar-toolbargroup-toolbargroupvariant-d-ts-toolbargroupvariant-button-group-removed-group-2",
+      "fixStrategyCorrect": true,
+      "notes": "button-group variant removal. Rule message includes new variant names.",
+      "frequency": 17,
+      "filesAffected": 10,
+      "before": "variant='button-group'",
+      "after": "variant='action-group'"
+    },
+    {
+      "changeId": "E03",
+      "component": "ToolbarGroup",
+      "category": "prop-value-change",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "sd-prop-value-toolbargroup-variant-icon-button-group"
+      ],
+      "fixStrategyKey": "sd-prop-value-toolbargroup-variant-icon-button-group",
+      "fixStrategyCorrect": true,
+      "notes": "SD rule: icon-button-group\u2192action-group-plain with PropValueChange.",
+      "frequency": 4,
+      "filesAffected": 2,
+      "before": "variant='icon-button-group'",
+      "after": "variant='action-group-plain'"
+    },
+    {
+      "changeId": "E04",
+      "component": "ToolbarItem/ToolbarGroup",
+      "category": "prop-value-change",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "sd-prop-value-toolbargroup-align-alignright",
+        "sd-prop-value-toolbaritem-align-alignright"
+      ],
+      "fixStrategyKey": "sd-prop-value-toolbargroup-align-alignright",
+      "fixStrategyCorrect": false,
+      "notes": "SD rules detect alignRight removal. Fix strategy has from='alignRight' but no 'to' field. Rule message says valid values include 'alignEnd'.",
+      "frequency": 2,
+      "filesAffected": 2,
+      "before": "align: { default: 'alignRight' }",
+      "after": "align: { default: 'alignEnd' }"
+    },
+    {
+      "changeId": "E05",
+      "component": "Label",
+      "category": "prop-value-change",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-label-label-labelprops-d-ts-label-color-type-changed-val-cyan-group-2"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-label-label-labelprops-d-ts-label-color-type-changed-val-cyan-group-2",
+      "fixStrategyCorrect": true,
+      "notes": "Label color cyan\u2192teal with PropValueChange.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "color='cyan'",
+      "after": "color='teal'"
+    },
+    {
+      "changeId": "E06",
+      "component": "Pagination",
+      "category": "prop-value-change",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "No rule for Pagination align alignRight\u2192alignEnd. Only ToolbarGroup/ToolbarItem align rules exist.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "align: { default: 'alignRight' }",
+      "after": "align: { default: 'alignEnd' }"
+    },
+    {
+      "changeId": "E07",
+      "component": "PageSection",
+      "category": "prop-value-change",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-page-pagesection-pagesectionprops-d-ts-pagesection-hasbodywrapper-signature-changed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-page-pagesection-pagesectionprops-d-ts-pagesection-hasbodywrapper-signature-changed",
+      "fixStrategyCorrect": true,
+      "notes": "hasBodyWrapper new prop detected with PropTypeChange.",
+      "frequency": 15,
+      "filesAffected": 15,
+      "before": "<PageSection> (no variant)",
+      "after": "<PageSection hasBodyWrapper={false}>"
+    },
+    {
+      "changeId": "F01",
+      "component": "EmptyState",
+      "category": "structure-change",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "sd-composition-emptystate-removed-member-emptystateheader",
+        "sd-composition-emptystate-removed-member-emptystateicon",
+        "sd-child-to-prop-emptystate-emptystateicon-to-icon",
+        "family:EmptyState"
+      ],
+      "fixStrategyKey": "sd-child-to-prop-emptystate-emptystateicon-to-icon",
+      "fixStrategyCorrect": true,
+      "notes": "Comprehensive: header/icon removal, ChildToProp for icon, FamilyMigration for full composition.",
+      "frequency": 25,
+      "filesAffected": 21,
+      "before": "<EmptyStateHeader> + <EmptyStateIcon> as children",
+      "after": "titleText, icon, headingLevel as props on <EmptyState>"
+    },
+    {
+      "changeId": "F02",
+      "component": "Button",
+      "category": "structure-change",
+      "coverageStatus": "rule-only",
+      "matchingRuleIDs": [
+        "semver-css-class-rename-c-button-icon"
+      ],
+      "fixStrategyKey": "semver-css-class-rename-c-button-icon",
+      "fixStrategyCorrect": false,
+      "notes": "Only CSS class rename (pf-v5-c-button__icon\u2192pf-v6). No API rule for icon-as-child\u2192icon-as-prop structural change.",
+      "frequency": 6,
+      "filesAffected": 5,
+      "before": "<Button><TrashIcon /></Button>",
+      "after": "<Button icon={<TrashIcon />} />"
+    },
+    {
+      "changeId": "F03",
+      "component": "Masthead",
+      "category": "structure-change",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "sd-cf-masthead-brand-in-main",
+        "sd-cf-masthead-brand-not-in-masthead-use-main",
+        "sd-cf-masthead-main-in-masthead",
+        "sd-cf-masthead-masthead-req-content-and-main"
+      ],
+      "fixStrategyKey": "sd-cf-masthead-brand-in-main",
+      "fixStrategyCorrect": true,
+      "notes": "SD conformance rules guide correct nesting. MastheadToggle should be inside MastheadMain.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "<MastheadToggle> sibling of <MastheadMain>",
+      "after": "<MastheadToggle> nested inside <MastheadMain>"
+    },
+    {
+      "changeId": "F04",
+      "component": "PageToggleButton",
+      "category": "structure-change",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-packages-react-core-src-components-page-pagetogglebutton-pagetogglebuttonprops-d-ts-pagetogglebutton-hamburgervariant-signature-changed-group-2"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-page-pagetogglebutton-pagetogglebuttonprops-d-ts-pagetogglebutton-hamburgervariant-signature-changed-group-2",
+      "fixStrategyCorrect": true,
+      "notes": "hamburgerVariant/isHamburgerButton type change detected.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "<PageToggleButton><BarsIcon /></PageToggleButton>",
+      "after": "<PageToggleButton isHamburgerButton />"
+    },
+    {
+      "changeId": "F05",
+      "component": "EmptyStateIcon",
+      "category": "structure-change",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "sd-composition-emptystate-removed-member-emptystateicon",
+        "semver-packages-react-core-src-components-emptystate-emptystateicon-d-ts-iconprops-removed"
+      ],
+      "fixStrategyKey": "semver-packages-react-core-src-components-emptystate-emptystateicon-d-ts-iconprops-removed",
+      "fixStrategyCorrect": true,
+      "notes": "EmptyStateIcon removal and IconProps removal detected.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "<EmptyStateIcon icon={X} color='black' /> (standalone)",
+      "after": "Render icon component directly"
+    },
+    {
+      "changeId": "G01",
+      "component": "react-tokens",
+      "category": "token-rename",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "CSS rule for --pf-v5-global--palette--black-1000 exists but won't detect JS import. Also: CSS maps to --pf-t--color--gray--95 but tackle2-ui needs chart_color_black_500.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_palette_black_1000",
+      "after": "chart_color_black_500"
+    },
+    {
+      "changeId": "G02",
+      "component": "react-tokens",
+      "category": "token-rename",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "CSS rule maps --pf-v5-global--palette--blue-300\u2192--pf-t--color--blue--40. tackle2-ui uses chart_color_blue_300 (different token).",
+      "frequency": 3,
+      "filesAffected": 3,
+      "before": "global_palette_blue_300",
+      "after": "chart_color_blue_300"
+    },
+    {
+      "changeId": "G03",
+      "component": "react-tokens",
+      "category": "token-rename",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "CSS rule exists but no JS import detection rule.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_palette_green_300",
+      "after": "chart_color_green_300"
+    },
+    {
+      "changeId": "G04",
+      "component": "react-tokens",
+      "category": "token-rename",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "CSS rule exists but no JS import detection rule.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_palette_orange_300",
+      "after": "chart_color_orange_300"
+    },
+    {
+      "changeId": "G05",
+      "component": "react-tokens",
+      "category": "token-removal",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "JS token removed from @patternfly/react-tokens v6. CSS variable has mapping but no react-tokens equivalent.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_palette_black_500",
+      "after": "no equivalent \u2014 manual constant required"
+    },
+    {
+      "changeId": "G06",
+      "component": "react-tokens",
+      "category": "token-removal",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "JS token removed. CSS maps to --pf-t--color--teal--60 but no react-tokens v6 export.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_palette_cyan_300",
+      "after": "no equivalent \u2014 manual constant using teal CSS variable"
+    },
+    {
+      "changeId": "G07",
+      "component": "react-tokens",
+      "category": "token-removal",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "JS token removed. CSS maps to --pf-t--color--yellow--30 but no react-tokens v6 export.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_palette_gold_300",
+      "after": "no equivalent \u2014 manual constant required"
+    },
+    {
+      "changeId": "G08",
+      "component": "react-tokens",
+      "category": "token-removal",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "JS token removed. CSS maps to --pf-t--color--purple--60 but no react-tokens v6 export.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_palette_purple_600",
+      "after": "no equivalent \u2014 manual constant required"
+    },
+    {
+      "changeId": "G09",
+      "component": "react-tokens",
+      "category": "token-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-danger-color-100"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-danger-color-100",
+      "fixStrategyCorrect": true,
+      "notes": "CSS variable rename with correct mapping. Non-palette token with direct equivalent.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_danger_color_100",
+      "after": "t_global_color_status_danger_default"
+    },
+    {
+      "changeId": "G10",
+      "component": "react-tokens",
+      "category": "token-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-color-dark-200"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-color-dark-200",
+      "fixStrategyCorrect": true,
+      "notes": "CSS variable rename with correct mapping.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_Color_dark_200",
+      "after": "t_global_text_color_200"
+    },
+    {
+      "changeId": "G11",
+      "component": "react-tokens",
+      "category": "token-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-disabled-color-200"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-disabled-color-200",
+      "fixStrategyCorrect": true,
+      "notes": "CSS variable rename with correct mapping.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_disabled_color_200",
+      "after": "t_global_text_color_disabled"
+    },
+    {
+      "changeId": "G12",
+      "component": "react-tokens",
+      "category": "token-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-info-color-100"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-info-color-100",
+      "fixStrategyCorrect": true,
+      "notes": "CSS variable rename with correct mapping.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_info_color_100",
+      "after": "t_global_color_status_info_default"
+    },
+    {
+      "changeId": "G13",
+      "component": "react-tokens",
+      "category": "token-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-info-color-200"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-info-color-200",
+      "fixStrategyCorrect": true,
+      "notes": "CSS variable rename with correct mapping.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_info_color_200",
+      "after": "t_global_color_status_info_200"
+    },
+    {
+      "changeId": "G14",
+      "component": "react-tokens",
+      "category": "token-rename",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-success-color-100"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-success-color-100",
+      "fixStrategyCorrect": true,
+      "notes": "CSS variable rename with correct mapping.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_success_color_100",
+      "after": "t_global_color_status_success_default"
+    },
+    {
+      "changeId": "G15",
+      "component": "react-tokens",
+      "category": "token-removal",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-danger-color-200"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-danger-color-200",
+      "fixStrategyCorrect": true,
+      "notes": "CSS variable has mapping. Token removal in JS but CSS equivalent exists.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_danger_color_200",
+      "after": "removed entirely (EmptyStateIcon color no longer used)"
+    },
+    {
+      "changeId": "G16",
+      "component": "react-tokens",
+      "category": "token-rename",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "CSS rule for --pf-v5-global--palette--black-300 exists but no JS import detection. Palette token.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "global_palette_black_300",
+      "after": "chart_color_black_200"
+    },
+    {
+      "changeId": "H01",
+      "component": "All components",
+      "category": "css-class-prefix",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "(556 semver-css-class-rename-c-* rules)"
+      ],
+      "fixStrategyKey": "semver-css-class-rename-c-button",
+      "fixStrategyCorrect": true,
+      "notes": "556 component CSS class rename rules with CssVariablePrefix strategy.",
+      "frequency": 200,
+      "filesAffected": 60,
+      "before": "pf-v5-c-* (e.g., pf-v5-c-button)",
+      "after": "pf-v6-c-* (e.g., pf-v6-c-button)"
+    },
+    {
+      "changeId": "H02",
+      "component": "Layout classes",
+      "category": "css-class-prefix",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "(14 semver-css-class-rename-l-* rules)"
+      ],
+      "fixStrategyKey": "semver-css-class-rename-l-bullseye",
+      "fixStrategyCorrect": true,
+      "notes": "14 layout CSS class rename rules.",
+      "frequency": 10,
+      "filesAffected": 5,
+      "before": "pf-v5-l-* (e.g., pf-v5-l-stack)",
+      "after": "pf-v6-l-* (e.g., pf-v6-l-stack)"
+    },
+    {
+      "changeId": "H03",
+      "component": "Utility classes",
+      "category": "css-class-prefix",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "(1446 semver-css-class-rename-u-* rules)"
+      ],
+      "fixStrategyKey": "semver-css-class-rename-u-align-content-center",
+      "fixStrategyCorrect": true,
+      "notes": "1446 utility CSS class rename rules.",
+      "frequency": 15,
+      "filesAffected": 8,
+      "before": "pf-v5-u-* (e.g., pf-v5-u-color-200)",
+      "after": "pf-v6-u-* (e.g., pf-v6-u-color-200)"
+    },
+    {
+      "changeId": "H04",
+      "component": "SVG classes",
+      "category": "css-class-prefix",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-css-class-rename-svg"
+      ],
+      "fixStrategyKey": "semver-css-class-rename-svg",
+      "fixStrategyCorrect": true,
+      "notes": "SVG class rename rule.",
+      "frequency": 4,
+      "filesAffected": 4,
+      "before": "pf-v5-svg",
+      "after": "pf-v6-svg"
+    },
+    {
+      "changeId": "I01",
+      "component": "Spacer tokens",
+      "category": "css-global-token",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-spacer-xl",
+        "semver-consumer-css-rename-var-pf-v5-global-spacer-lg",
+        "semver-consumer-css-rename-var-pf-v5-global-spacer-md",
+        "semver-consumer-css-rename-var-pf-v5-global-spacer-sm"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-spacer-xl",
+      "fixStrategyCorrect": true,
+      "notes": "9 spacer token rules with CssVariablePrefix.",
+      "frequency": 10,
+      "filesAffected": 7,
+      "before": "--pf-v5-global--spacer--{xl,lg,md,sm,xs}",
+      "after": "--pf-t--global--spacer--{xl,lg,md,sm,xs}"
+    },
+    {
+      "changeId": "I02",
+      "component": "Danger color",
+      "category": "css-global-token",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-danger-color-100"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-danger-color-100",
+      "fixStrategyCorrect": true,
+      "notes": "Correct mapping to --pf-t--global--color--status--danger--default.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "--pf-v5-global--danger-color--100",
+      "after": "--pf-t--global--color--status--danger--default"
+    },
+    {
+      "changeId": "I03",
+      "component": "Background color",
+      "category": "css-global-token",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-backgroundcolor-100"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-backgroundcolor-100",
+      "fixStrategyCorrect": true,
+      "notes": "Correct mapping.",
+      "frequency": 3,
+      "filesAffected": 3,
+      "before": "--pf-v5-global--BackgroundColor--100",
+      "after": "--pf-t--global--background--color--primary--default"
+    },
+    {
+      "changeId": "I04",
+      "component": "Border color",
+      "category": "css-global-token",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-bordercolor-100"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-bordercolor-100",
+      "fixStrategyCorrect": true,
+      "notes": "Correct mapping.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "--pf-v5-global--BorderColor--100",
+      "after": "--pf-t--global--border--color--default"
+    },
+    {
+      "changeId": "I05",
+      "component": "Success color",
+      "category": "css-global-token",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-success-color-100"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-success-color-100",
+      "fixStrategyCorrect": true,
+      "notes": "Correct mapping.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "--pf-v5-global--success-color--100",
+      "after": "--pf-t--global--color--status--success--default"
+    },
+    {
+      "changeId": "I06",
+      "component": "Warning color",
+      "category": "css-global-token",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-warning-color-100"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-warning-color-100",
+      "fixStrategyCorrect": true,
+      "notes": "Correct mapping.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "--pf-v5-global--warning-color--100",
+      "after": "--pf-t--global--color--status--warning--default"
+    },
+    {
+      "changeId": "I07",
+      "component": "Font size",
+      "category": "css-global-token",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-consumer-css-rename-var-pf-v5-global-fontsize-md",
+        "semver-consumer-css-rename-var-pf-v5-global-fontsize-lg"
+      ],
+      "fixStrategyKey": "semver-consumer-css-rename-var-pf-v5-global-fontsize-md",
+      "fixStrategyCorrect": true,
+      "notes": "Font size CSS variable renames.",
+      "frequency": 3,
+      "filesAffected": 2,
+      "before": "--pf-v5-global--FontSize--md / --lg",
+      "after": "--pf-t--global--font--size--body--default / --body--lg"
+    },
+    {
+      "changeId": "J01",
+      "component": "All component CSS variables",
+      "category": "css-component-variable",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "No rules for --pf-v5-c-{component}--* CSS variables. Only global CSS variables and class renames are covered. 14 component families affected.",
+      "frequency": 40,
+      "filesAffected": 15,
+      "before": "--pf-v5-c-{component}--*",
+      "after": "--pf-v6-c-{component}--*"
+    },
+    {
+      "changeId": "J02",
+      "component": "Nav",
+      "category": "css-component-variable",
+      "coverageStatus": "missing-rule",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "No rule for --pf-v5-c-nav__link--before--BorderColor\u2192--pf-v6-c-nav__link--BorderColor. Non-trivial structural rename.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "--pf-v5-c-nav__link--before--BorderColor",
+      "after": "--pf-v6-c-nav__link--BorderColor"
+    },
+    {
+      "changeId": "K01",
+      "component": "Menu/Dropdown",
+      "category": "behavior-change",
+      "coverageStatus": "inherent-gap",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "Portal rendering is runtime behavior. Affects test assertions on DOM placement. No static detection possible.",
+      "frequency": 7,
+      "filesAffected": 7,
+      "before": "Menus render inside parent DOM",
+      "after": "Menus render via Popper/portal outside parent DOM"
+    },
+    {
+      "changeId": "K02",
+      "component": "Switch",
+      "category": "behavior-change",
+      "coverageStatus": "inherent-gap",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "CSS class state\u2192:checked is internal rendering. Affects test selectors (pf-m-on/pf-m-off).",
+      "frequency": 3,
+      "filesAffected": 2,
+      "before": ".pf-m-on / .pf-m-off CSS classes for state",
+      "after": "Native :checked on input element"
+    },
+    {
+      "changeId": "K03",
+      "component": "Button",
+      "category": "behavior-change",
+      "coverageStatus": "inherent-gap",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "pf-m-disabled\u2192native disabled attribute. Affects test assertions on DOM attributes.",
+      "frequency": 6,
+      "filesAffected": 3,
+      "before": "pf-m-disabled CSS class",
+      "after": "Native disabled HTML attribute"
+    },
+    {
+      "changeId": "K04",
+      "component": "Button",
+      "category": "markup-change",
+      "coverageStatus": "inherent-gap",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "Internal DOM structure (text wrapper span). Affects test selectors for button text content.",
+      "frequency": 6,
+      "filesAffected": 2,
+      "before": "Text as direct child",
+      "after": "Text wrapped in <span class='pf-v6-c-button__text'>"
+    },
+    {
+      "changeId": "K05",
+      "component": "Button",
+      "category": "markup-change",
+      "coverageStatus": "inherent-gap",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "Internal DOM structure (icon wrapper span). Affects test selectors for button icon content.",
+      "frequency": 2,
+      "filesAffected": 1,
+      "before": "Icon as direct child",
+      "after": "Icon wrapped in <span class='pf-v6-c-button__icon'>"
+    },
+    {
+      "changeId": "K06",
+      "component": "Button",
+      "category": "markup-change",
+      "coverageStatus": "inherent-gap",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "aria-disabled attribute removal from rendered output. Affects test assertions on aria-disabled='false'.",
+      "frequency": 18,
+      "filesAffected": 6,
+      "before": "aria-disabled='false' rendered",
+      "after": "aria-disabled attribute removed entirely"
+    },
+    {
+      "changeId": "K07",
+      "component": "All (OUIA)",
+      "category": "markup-change",
+      "coverageStatus": "inherent-gap",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "OUIA prefix PF5/*\u2192PF6/* is automatic internal version change. Affects test assertions on data-ouia-component-type.",
+      "frequency": 89,
+      "filesAffected": 10,
+      "before": "data-ouia-component-type='PF5/*'",
+      "after": "data-ouia-component-type='PF6/*'"
+    },
+    {
+      "changeId": "K08",
+      "component": "Content",
+      "category": "markup-change",
+      "coverageStatus": "inherent-gap",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "Content <p> getting class='pf-v6-c-content--p' is internal markup change. Affects test selectors.",
+      "frequency": 5,
+      "filesAffected": 2,
+      "before": "<p> without semantic class",
+      "after": "<p class='pf-v6-c-content--p'>"
+    },
+    {
+      "changeId": "K09",
+      "component": "EmptyState",
+      "category": "markup-change",
+      "coverageStatus": "inherent-gap",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "EmptyState icon inline color style removal. Rendering behavior not visible in JSX AST.",
+      "frequency": 2,
+      "filesAffected": 1,
+      "before": "Inline --pf-v5-c-empty-state__icon--Color style",
+      "after": "Style removed (icon color not supported)"
+    },
+    {
+      "changeId": "K10",
+      "component": "DatePicker",
+      "category": "behavior-change",
+      "coverageStatus": "inherent-gap",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "Duplicate date button fix is internal rendering behavior. Only detectable via runtime testing.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "Duplicate date buttons rendered",
+      "after": "Single date button only"
+    },
+    {
+      "changeId": "K11",
+      "component": "Tabs",
+      "category": "behavior-change",
+      "coverageStatus": "inherent-gap",
+      "matchingRuleIDs": [],
+      "fixStrategyKey": null,
+      "fixStrategyCorrect": null,
+      "notes": "Tab item discovery via OUIA attributes is a test selector concern. Runtime DOM output.",
+      "frequency": 1,
+      "filesAffected": 2,
+      "before": "Tab items found via CSS selector",
+      "after": "Tab items found via OUIA PF6/TabButton attribute"
+    },
+    {
+      "changeId": "L01",
+      "component": "@patternfly/patternfly",
+      "category": "package-upgrade",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-dep-update-patternfly-patternfly"
+      ],
+      "fixStrategyKey": "semver-dep-update-patternfly-patternfly",
+      "fixStrategyCorrect": true,
+      "notes": "EnsureDependency to ^6.4.0.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "5.4.2",
+      "after": "6.4.0"
+    },
+    {
+      "changeId": "L02",
+      "component": "@patternfly/react-core",
+      "category": "package-upgrade",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-dep-update-patternfly-react-core"
+      ],
+      "fixStrategyKey": "semver-dep-update-patternfly-react-core",
+      "fixStrategyCorrect": true,
+      "notes": "EnsureDependency to ^6.4.1.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "5.4.14",
+      "after": "6.4.3"
+    },
+    {
+      "changeId": "L03",
+      "component": "@patternfly/react-table",
+      "category": "package-upgrade",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-dep-update-patternfly-react-table"
+      ],
+      "fixStrategyKey": "semver-dep-update-patternfly-react-table",
+      "fixStrategyCorrect": true,
+      "notes": "EnsureDependency to ^6.4.1.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "5.4.16",
+      "after": "6.4.3"
+    },
+    {
+      "changeId": "L04",
+      "component": "@patternfly/react-charts",
+      "category": "package-upgrade",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-dep-update-patternfly-react-charts"
+      ],
+      "fixStrategyKey": "semver-dep-update-patternfly-react-charts",
+      "fixStrategyCorrect": true,
+      "notes": "EnsureDependency to ^8.4.1.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "7.4.9",
+      "after": "8.4.1"
+    },
+    {
+      "changeId": "L05",
+      "component": "@patternfly/react-code-editor",
+      "category": "package-upgrade",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-dep-update-patternfly-react-code-editor"
+      ],
+      "fixStrategyKey": "semver-dep-update-patternfly-react-code-editor",
+      "fixStrategyCorrect": true,
+      "notes": "EnsureDependency to ^6.4.1.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "5.4.18",
+      "after": "6.4.3"
+    },
+    {
+      "changeId": "L06",
+      "component": "@patternfly/react-tokens",
+      "category": "package-upgrade",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-dep-update-patternfly-react-tokens"
+      ],
+      "fixStrategyKey": "semver-dep-update-patternfly-react-tokens",
+      "fixStrategyCorrect": true,
+      "notes": "EnsureDependency to ^6.4.0.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": "5.4.1",
+      "after": "6.4.0"
+    },
+    {
+      "changeId": "L07",
+      "component": "victory",
+      "category": "new-dependency",
+      "coverageStatus": "fully-covered",
+      "matchingRuleIDs": [
+        "semver-manifest-peerdependencies-victory-core-peer-dependency-added"
+      ],
+      "fixStrategyKey": "semver-manifest-peerdependencies-victory-core-peer-dependency-added",
+      "fixStrategyCorrect": true,
+      "notes": "17 victory peer dependency rules. EnsureDependency strategy.",
+      "frequency": 1,
+      "filesAffected": 1,
+      "before": null,
+      "after": "^37.3.6"
+    }
+  ]
+}
