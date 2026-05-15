@@ -121,6 +121,156 @@ Print a concise summary to the conversation:
 - Top 3 priority fixes
 - Link to full report
 
-### Step 9: Rule analysis (if semver data present)
+### Step 9: Semver report analysis (if present)
+
+Check if `results/<date>-<branch>/semver/semver_report.json` exists. If so, analyze the report alongside the scorecard:
+
+1. **Load semver_report.json** — this contains all breaking changes detected by semver-analyzer between the two PatternFly versions. Key fields per change:
+   - `symbol`, `qualified_name`, `kind` (constant, interface, type_alias, etc.)
+   - `change` (renamed, removed, modified, added)
+   - `before`/`after`, `description`
+   - `migration_target` (if present): `replacement_symbol`, `replacement_package`, `matching_members`
+
+2. **Cross-reference against breaking-changes.json** — for each test case:
+   - Search semver_report.json for changes matching the component and prop
+   - Record whether semver-analyzer **detected** the breaking change (`detected: true/false`)
+   - If detected, note the `change` type and whether `migration_target` was populated
+
+3. **Add detection metrics to scorecard.json** — extend each test case entry with:
+   ```json
+   {
+     "semverDetected": true,
+     "semverChangeType": "removed",
+     "semverHasMigrationTarget": true
+   }
+   ```
+
+4. **Add detection summary to scorecard.json**:
+   ```json
+   {
+     "semverDetection": {
+       "detected": "<count>",
+       "undetected": "<count>",
+       "withMigrationTarget": "<count>"
+     }
+   }
+   ```
+
+5. **Add detection section to report.md**:
+   - Detection rate: X/85 breaking changes found by semver-analyzer
+   - Undetected changes: list components/props that semver missed entirely
+   - Detection-to-correctness correlation: how often detection led to a correct fix
+
+### Step 10: Kantra output analysis (if present)
+
+Check if `results/<date>-<branch>/semver/kantra/` exists with `output.yaml` or `output.json`. If so, analyze the kantra violations:
+
+1. **Load kantra output** — this is the static analysis report from running the generated semver rules against the target app. Each violation has:
+   - `ruleID`: which semver rule triggered
+   - `description`/`message`: what was detected
+   - `incidents`: array of file:line locations where the violation was found
+   - `category`, `effort`, `labels`
+
+2. **Cross-reference against test cases** — for each test case:
+   - Search kantra output for violations in the test case's file path
+   - Record which rules triggered and how many incidents were found
+   - Note if no violations were found for a test case that needed fixing
+
+3. **Add kantra metrics to scorecard.json** — extend each test case entry with:
+   ```json
+   {
+     "kantraViolationsFound": 2,
+     "kantraRuleIDs": ["semver-...-rule-id-1", "semver-...-rule-id-2"]
+   }
+   ```
+
+4. **Add kantra summary to scorecard.json**:
+   ```json
+   {
+     "kantraAnalysis": {
+       "totalViolations": "<count>",
+       "testCasesWithViolations": "<count>",
+       "testCasesWithoutViolations": "<count>",
+       "uniqueRulesTriggered": "<count>"
+     }
+   }
+   ```
+
+5. **Add kantra section to report.md**:
+   - Violation coverage: X/85 test cases had at least one kantra violation
+   - Missed test cases: list files where kantra found no violations but fixes were needed
+   - Over-matching: cases where kantra violations didn't correspond to actual needed changes
+   - Rule-to-outcome correlation: how often having the right kantra violation led to a correct fix
+
+### Step 11: Pipeline correlation analysis
+
+If both semver report AND kantra data are present, add a pipeline correlation section to report.md:
+
+1. **Full pipeline funnel**:
+   - Semver detected → Kantra flagged → Rule+guidance applied → Correct fix
+   - Show where the pipeline leaks: detection failures, rule gaps, fix failures
+
+2. **Drop-off table**:
+   | Stage | Count | % of 85 |
+   |-------|-------|---------|
+   | Breaking changes in catalog | 85 | 100% |
+   | Detected by semver-analyzer | X | Y% |
+   | Flagged by kantra | X | Y% |
+   | Fix attempted | X | Y% |
+   | Fix correct (score 3) | X | Y% |
+
+### Step 12: UXD quality criteria
+
+Evaluate the tool's output against the criteria UXD stakeholders used when reviewing our quipucords-ui migration (from the March 2026 review). These are the bar UXD holds us to — not just "does the code work" but "is it production-quality modern PF6 code."
+
+For each file on the tool branch, check:
+
+1. **Zero deprecated usage** — No deprecated PF5 imports, no deprecated component APIs, no `@deprecated` props still in use. Scan for:
+   - Imports from deprecated paths (e.g., `@patternfly/react-core/deprecated`)
+   - Props marked as deprecated in PF6 (e.g., `isOpen` on components that moved to `isExpanded`)
+   - Components that have PF6 equivalents but the code still uses PF5 shimmed versions
+
+2. **Modern Modal API** — If the code uses Modal, verify it uses the PF6 Modal API (composable pattern with `ModalHeader`, `ModalBody`, `ModalFooter` children) rather than the PF5 Modal API (props-based: `title`, `actions`, `isOpen` on the Modal element itself)
+
+3. **Vendored code fully updated** — If the project has vendored/copied PF component code (common in large apps), check that vendored files also got migrated, not just the app's own source files. Look for leftover `pf-v5-` CSS class prefixes, old variable references, or PF5 patterns in files outside the standard `src/` tree.
+
+Add to scorecard.json per test case:
+```json
+{
+  "uxdQuality": {
+    "hasDeprecatedUsage": false,
+    "usesModernModalAPI": true,
+    "vendoredCodeUpdated": "n/a"
+  }
+}
+```
+
+Add UXD quality summary to scorecard.json:
+```json
+{
+  "uxdQuality": {
+    "deprecatedFree": "<count of files with zero deprecated usage>",
+    "modernModalAPI": "<count using modern API> / <count using Modal>",
+    "vendoredIssues": "<count of vendored files with leftover PF5 patterns>"
+  }
+}
+```
+
+Add UXD quality section to report.md:
+- **Deprecated usage**: X files still reference deprecated APIs (list them)
+- **Modal API**: X/Y Modal usages use modern composable pattern
+- **Vendored code**: X files with leftover PF5 patterns
+- **UXD readiness**: summary of whether output would pass UXD review based on March 2026 criteria
+
+### Step 13: Rule analysis (if semver data present)
 
 Check if `results/<date>-<branch>/semver/` exists with `semver_rules/` and `fix-guidance/` subdirectories. If so, automatically run `/analyze-rules results/<date>-<branch>` to produce a root cause analysis of the rules and fix-guidance.
+
+### Step 14: Print summary
+
+Update the summary from Step 8 with additional data points (if available):
+- Semver detection: X/85 breaking changes detected
+- Kantra coverage: X/85 test cases had violations flagged
+- Pipeline funnel: detected → flagged → attempted → correct
+- Top 3 pipeline bottlenecks (where the most test cases drop off)
+- UXD readiness: deprecated usage count, Modal API compliance, vendored code status
