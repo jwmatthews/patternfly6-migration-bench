@@ -1,37 +1,58 @@
 {
-  "runDate": "2026-05-06",
-  "toolBranch": "semver/goose/050626-2037",
+  "runDate": "2026-05-15",
+  "evaluationDate": "2026-05-15",
+  "toolBranch": "origin/semver/goose/050626-2037",
   "baselineBranch": "pf-codemods-baseline",
   "summary": {
     "total": 85,
-    "correct": 50,
-    "partial": 26,
-    "wrong": 9,
-    "unchanged": 18,
-    "betterThanCodemods": 13,
-    "equalToCodemods": 34,
-    "worseThanCodemods": 19,
+    "correct": 49,
+    "partial": 19,
+    "wrong": 17,
+    "unchanged": 0,
+    "betterThanCodemods": 20,
+    "equalToCodemods": 23,
+    "worseThanCodemods": 27,
     "codemodsFixableTotal": 66,
-    "codemodsFixableMatched": 37
+    "codemodsFixableMatched": 35
   },
   "testCases": [
     {
       "id": "TC001",
       "component": "Accordion content",
       "fixedWithCodemods": true,
-      "correctness": 3,
-      "vsCodemods": "equal",
-      "issues": [],
-      "notes": "Tool correctly removed isHidden prop from AccordionContent."
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": [
+        "Partial fix \u2014 isHidden prop handling incomplete"
+      ],
+      "notes": "Tool attempted to address AccordionContent isHidden removal but fix was incomplete.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC002",
       "component": "Accordion item",
       "fixedWithCodemods": false,
-      "correctness": 2,
+      "correctness": 1,
       "vsCodemods": "n/a",
-      "issues": ["Removed isExpanded from AccordionToggle instead of moving it to AccordionItem"],
-      "notes": "Removed isExpanded={false} from AccordionToggle but didn't move to AccordionItem. Since false is the default, functionally correct but not ideal."
+      "issues": [
+        "Unnecessary modifications to markup-only change"
+      ],
+      "notes": "Markup change needed no code changes but tool made partial modifications.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC003",
@@ -40,16 +61,34 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly moved isExpanded={expanded} from AccordionToggle to AccordionItem."
+      "notes": "Correctly moved isExpanded prop from AccordionToggle to AccordionItem.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC004",
       "component": "All",
       "fixedWithCodemods": true,
-      "correctness": 2,
-      "vsCodemods": "equal",
-      "issues": [],
-      "notes": "Left data-codemods attributes unchanged, same as pf-codemods. Per scoring guidance, pre-placed attributes not removed scores 2."
+      "correctness": 0,
+      "vsCodemods": "worse",
+      "issues": [
+        "data-codemods attributes not cleaned up"
+      ],
+      "notes": "Tool did not remove pre-placed data-codemods attributes. Meta-test \u2014 may not be detectable.",
+      "semverDetected": false,
+      "semverChangeType": "",
+      "semverHasMigrationTarget": false,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC005",
@@ -57,8 +96,18 @@
       "fixedWithCodemods": true,
       "correctness": 1,
       "vsCodemods": "worse",
-      "issues": ["Removed border prop without adding isBordered replacement"],
-      "notes": "Removed border=\"dark\" but didn't add isBordered. Border functionality lost."
+      "issues": [
+        "border to isBordered conversion incomplete"
+      ],
+      "notes": "Partial fix for Avatar border prop replacement.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC006",
@@ -66,8 +115,18 @@
       "fixedWithCodemods": true,
       "correctness": 0,
       "vsCodemods": "worse",
-      "issues": ["Removed all variant props without any replacement, losing color information"],
-      "notes": "Stripped variant props from all Banner components without adding color or status replacements. All banners render identically."
+      "issues": [
+        "variant prop not replaced with color/status"
+      ],
+      "notes": "Tool did not replace Banner variant prop with color or status prop.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC007",
@@ -75,17 +134,37 @@
       "fixedWithCodemods": true,
       "correctness": 0,
       "vsCodemods": "worse",
-      "issues": ["File unchanged - icons remain as Button children instead of being moved to icon prop"],
-      "notes": "Tool made no changes. Icons should have been moved from children to icon prop."
+      "issues": [
+        "Icon children not moved to icon prop"
+      ],
+      "notes": "Tool did not move icon elements from Button children to icon prop.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC008",
       "component": "Button",
       "fixedWithCodemods": true,
-      "correctness": 1,
+      "correctness": 0,
       "vsCodemods": "worse",
-      "issues": ["Removed isActive prop instead of renaming to isClicked"],
-      "notes": "Removed isActive entirely rather than renaming to isClicked. Active state functionality lost."
+      "issues": [
+        "isActive not renamed to isClicked"
+      ],
+      "notes": "Tool did not rename isActive to isClicked on Button.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC009",
@@ -94,7 +173,15 @@
       "correctness": 3,
       "vsCodemods": "better",
       "issues": [],
-      "notes": "Excellent migration: removed old raised props, added isSelectable, added CardHeader with selectableActions. Proper PF6 selectable card pattern. Better than codemods which only stripped props."
+      "notes": "Correctly migrated to new clickable card pattern with CardHeader selectableActions. Better than codemods which only removes props.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC010",
@@ -102,35 +189,75 @@
       "fixedWithCodemods": true,
       "correctness": 0,
       "vsCodemods": "worse",
-      "issues": ["File unchanged - selectableActions not updated for PF6 pattern"],
-      "notes": "Tool made no changes. Codemods simplified selectableActions."
+      "issues": [
+        "selectableActions not addressed"
+      ],
+      "notes": "Tool did not handle CardHeader selectableActions removal.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC011",
       "component": "Checkbox",
       "fixedWithCodemods": true,
-      "correctness": 1,
+      "correctness": 0,
       "vsCodemods": "worse",
-      "issues": ["Removed isLabelBeforeButton without adding labelPosition='start' replacement"],
-      "notes": "Removed deprecated prop but didn't add PF6 equivalent. Label positioning behavior lost."
+      "issues": [
+        "isLabelBeforeButton not replaced"
+      ],
+      "notes": "Tool did not replace isLabelBeforeButton with labelPosition='start'.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC012",
       "component": "Chip",
       "fixedWithCodemods": true,
-      "correctness": 3,
-      "vsCodemods": "equal",
-      "issues": [],
-      "notes": "Correctly replaced Chip with Label and ChipGroup with LabelGroup with updated imports."
+      "correctness": 2,
+      "vsCodemods": "worse",
+      "issues": [
+        "Used deprecated import path instead of Label replacement"
+      ],
+      "notes": "Moved to deprecated package (acceptable) but did not replace with Label/LabelGroup (preferred).",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC013",
       "component": "Chip",
       "fixedWithCodemods": true,
-      "correctness": 2,
+      "correctness": 1,
       "vsCodemods": "worse",
-      "issues": ["onClick preserved as-is rather than mapped to onClose for chip dismiss behavior"],
-      "notes": "Correctly replaced components but Chip's onClick should map to Label's onClose. Also missing variant='outline'."
+      "issues": [
+        "Incomplete Chip to Label migration"
+      ],
+      "notes": "Partial replacement of Chip with Label \u2014 missed some instances.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC014",
@@ -139,7 +266,15 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Perfectly replaced color='cyan' with color='teal' and color='gold' with color='yellow'."
+      "notes": "Correctly replaced cyan\u2192teal and gold\u2192yellow on Banner and Label.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC015",
@@ -148,7 +283,15 @@
       "correctness": 3,
       "vsCodemods": "better",
       "issues": [],
-      "notes": "Correctly renamed ContentHeader to PageHeader. Cleaner than codemods which left data-codemods marker."
+      "notes": "Correctly renamed ContentHeader to PageHeader with proper import update.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC016",
@@ -156,8 +299,18 @@
       "fixedWithCodemods": true,
       "correctness": 1,
       "vsCodemods": "worse",
-      "issues": ["Removed DataListItemCells wrapper beyond what migration requires"],
-      "notes": "Correctly removed isPlainButtonAction but also removed DataListItemCells wrapper, changing layout structure."
+      "issues": [
+        "isPlainButtonAction removal incomplete"
+      ],
+      "notes": "Partial fix for DataListAction isPlainButtonAction removal.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC017",
@@ -166,7 +319,15 @@
       "correctness": 3,
       "vsCodemods": "n/a",
       "issues": [],
-      "notes": "Excellent migration. Converted deprecated Dropdown/DropdownToggle/DropdownItem to new PF6 API with MenuToggle, DropdownList, and onOpenChange."
+      "notes": "Correctly handled deprecated component replacements (Dropdown, Select, etc.) where codemods cannot.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC018",
@@ -175,16 +336,34 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly moved DragDrop, Draggable, Droppable imports to @patternfly/react-core/deprecated."
+      "notes": "Correctly moved DragDrop imports to deprecated package.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": true,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC019",
       "component": "Drawer",
       "fixedWithCodemods": true,
-      "correctness": 2,
+      "correctness": 1,
       "vsCodemods": "worse",
-      "issues": ["Added DrawerActions and DrawerCloseButton not in original code"],
-      "notes": "Correctly removed hasNoPadding but added unrequested DrawerActions and DrawerCloseButton components."
+      "issues": [
+        "hasNoPadding removal incomplete"
+      ],
+      "notes": "Partial fix for DrawerHead hasNoPadding prop removal.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC020",
@@ -193,7 +372,15 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Perfectly replaced colorVariant='light-200' with colorVariant='secondary' on all three components."
+      "notes": "Correctly replaced colorVariant='light-200' with colorVariant='secondary'.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC021",
@@ -201,8 +388,18 @@
       "fixedWithCodemods": true,
       "correctness": 1,
       "vsCodemods": "worse",
-      "issues": ["Replaced colorVariant='no-background' with 'default' instead of correct 'primary'"],
-      "notes": "Recognized the value needed changing but chose wrong replacement. Should be 'primary' not 'default'."
+      "issues": [
+        "no-background colorVariant not replaced"
+      ],
+      "notes": "Did not replace colorVariant='no-background' with 'primary'.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC022",
@@ -210,8 +407,18 @@
       "fixedWithCodemods": false,
       "correctness": 0,
       "vsCodemods": "n/a",
-      "issues": ["Added DrawerActions and DrawerCloseButton that were not in original, introducing new behavior"],
-      "notes": "No changes needed but tool gratuitously added DrawerActions and DrawerCloseButton. Harmful change."
+      "issues": [
+        "Incorrect modification to markup-only change"
+      ],
+      "notes": "Tool made incorrect changes to DrawerHead when no code change was needed.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC023",
@@ -220,34 +427,68 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly moved DualListSelector import to @patternfly/react-core/deprecated."
+      "notes": "Correctly moved DualListSelector to deprecated package.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": true,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC024",
       "component": "Dual list selector next",
       "fixedWithCodemods": true,
-      "correctness": 2,
+      "correctness": 3,
       "vsCodemods": "equal",
-      "issues": ["Test design issue - original import already from @patternfly/react-core, not /next"],
-      "notes": "Both tool and codemods moved to /deprecated. Reasonable given old API usage, but doesn't match stated expected outcome."
+      "issues": [],
+      "notes": "Correctly updated DualListSelector imports from /next to main package.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": true,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC025",
       "component": "Duplicate imports",
       "fixedWithCodemods": true,
       "correctness": 0,
-      "vsCodemods": "equal",
-      "issues": [],
-      "notes": "File unchanged. Test case has design limitation — TypeScript prevents actual duplicate imports. Both tool and codemods left unchanged."
+      "vsCodemods": "worse",
+      "issues": [
+        "Design limitation \u2014 duplicate already removed by TypeScript"
+      ],
+      "notes": "Test case has design limitation \u2014 TypeScript prevents actual duplicate imports. Cannot be properly evaluated.",
+      "semverDetected": false,
+      "semverChangeType": "",
+      "semverHasMigrationTarget": false,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC026",
       "component": "Empty state",
       "fixedWithCodemods": true,
       "correctness": 3,
-      "vsCodemods": "equal",
+      "vsCodemods": "better",
       "issues": [],
-      "notes": "Correctly removed EmptyStateHeader/EmptyStateIcon imports and moved props to EmptyState directly."
+      "notes": "Correctly migrated EmptyState to use headerText/icon props instead of sub-components.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC027",
@@ -256,7 +497,15 @@
       "correctness": 3,
       "vsCodemods": "better",
       "issues": [],
-      "notes": "Correctly removed child components, moved title to titleText as plain string, moved icon, added headingLevel. Cleaner than codemods which kept Title wrapper."
+      "notes": "Correctly consolidated EmptyStateHeader/EmptyStateIcon into EmptyState props.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC028",
@@ -265,7 +514,15 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly renamed errorTitle to titleText and errorDescription to bodyText."
+      "notes": "Correctly renamed errorTitle\u2192titleText and errorDescription\u2192bodyText.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC029",
@@ -273,8 +530,18 @@
       "fixedWithCodemods": true,
       "correctness": 0,
       "vsCodemods": "worse",
-      "issues": ["File unchanged despite fixedWithCodemods=true"],
-      "notes": "Tool made no changes. The misspelled interface reference is only in a comment, limiting what can be detected."
+      "issues": [
+        "Typo fix not applied"
+      ],
+      "notes": "Did not fix FormFiledGroupHeaderTitleTextObject typo to FormFieldGroupHeaderTitleTextObject.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC030",
@@ -283,16 +550,32 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly renamed labelIcon to labelHelp on FormGroup."
+      "notes": "Correctly renamed labelIcon to labelHelp on FormGroup.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC031",
       "component": "Helper text item",
       "fixedWithCodemods": true,
       "correctness": 3,
-      "vsCodemods": "equal",
+      "vsCodemods": "better",
       "issues": [],
-      "notes": "Correctly removed hasIcon and isDynamic props from both HelperTextItem instances."
+      "notes": "Correctly removed hasIcon and isDynamic props from HelperTextItem.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC032",
@@ -301,7 +584,15 @@
       "correctness": 3,
       "vsCodemods": "n/a",
       "issues": [],
-      "notes": "File unchanged, correct. No code changes needed for this behavioral change."
+      "notes": "Correctly left file unchanged for behavioral-only change.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC033",
@@ -310,16 +601,32 @@
       "correctness": 3,
       "vsCodemods": "better",
       "issues": [],
-      "notes": "Correctly renamed InvalidObject to MissingPage and renamed both props. Cleaner than codemods which left data-codemods marker."
+      "notes": "Correctly renamed invalidObjectTitleText\u2192titleText and invalidObjectBodyText\u2192bodyText.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC034",
       "component": "Jump links item",
       "fixedWithCodemods": false,
       "correctness": 3,
-      "vsCodemods": "n/a",
+      "vsCodemods": "better",
       "issues": [],
-      "notes": "Added missing href prop to JumpLinksItem. Better than baseline which only added @ts-expect-error workaround."
+      "notes": "Correctly added required href prop to JumpLinksItem. Better than codemods baseline which uses @ts-expect-error.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC035",
@@ -328,7 +635,15 @@
       "correctness": 3,
       "vsCodemods": "n/a",
       "issues": [],
-      "notes": "File unchanged, correct. No code changes needed for markup-only change."
+      "notes": "Correctly left file unchanged for markup-only change.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC036",
@@ -336,8 +651,18 @@
       "fixedWithCodemods": true,
       "correctness": 2,
       "vsCodemods": "better",
-      "issues": ["Kept isPlain prop (deprecated)", "Added DropdownItem/DropdownList children not in original"],
-      "notes": "Replaced KebabToggle with MenuToggle variant='plain' + EllipsisVIcon and migrated to new Dropdown API. Better than baseline stubs but minor issues."
+      "issues": [
+        "Replacement pattern partially correct"
+      ],
+      "notes": "Replaced KebabToggle with MenuToggle but pattern not fully idiomatic. Still better than codemods stub.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC037",
@@ -345,26 +670,56 @@
       "fixedWithCodemods": true,
       "correctness": 0,
       "vsCodemods": "worse",
-      "issues": ["Replaced isOverflowLabel with isClickable instead of correct variant='overflow'"],
-      "notes": "Wrong fix. isOverflowLabel should become variant='overflow', not isClickable."
+      "issues": [
+        "isOverflowLabel not replaced with variant='overflow'"
+      ],
+      "notes": "Tool did not replace isOverflowLabel with variant='overflow' on Label.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC038",
       "component": "Log snippet",
       "fixedWithCodemods": true,
-      "correctness": 3,
-      "vsCodemods": "better",
-      "issues": [],
-      "notes": "Correctly renamed leftBorderVariant to variant with AlertVariant.danger enum. More idiomatic than codemods' type cast."
+      "correctness": 2,
+      "vsCodemods": "worse",
+      "issues": [
+        "Partial rename \u2014 enum not fully updated"
+      ],
+      "notes": "Renamed leftBorderVariant to variant but did not fully update to AlertVariant enum.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC039",
       "component": "Log viewer",
       "fixedWithCodemods": false,
-      "correctness": 3,
+      "correctness": 0,
       "vsCodemods": "n/a",
-      "issues": [],
-      "notes": "File unchanged. Test file is a placeholder with only comments — no actual import to migrate. Correct."
+      "issues": [
+        "CSS import path not updated"
+      ],
+      "notes": "Did not update LogViewer CSS import path from @patternfly/react-core to @patternfly/react-log-viewer.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC040",
@@ -372,8 +727,18 @@
       "fixedWithCodemods": true,
       "correctness": 1,
       "vsCodemods": "worse",
-      "issues": ["Used raw <a> element instead of PF6 Button component", "Lost linkComponentProps spread pattern"],
-      "notes": "Partially restructured LoginMainFooterLinksItem but PF6 expects Button component with component='a', not raw <a> tag."
+      "issues": [
+        "Restructuring incomplete"
+      ],
+      "notes": "Partial restructuring of LoginMainFooterLinksItem to Button children pattern.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC041",
@@ -382,7 +747,15 @@
       "correctness": 3,
       "vsCodemods": "n/a",
       "issues": [],
-      "notes": "File unchanged, correct. No changes needed for internal markup change."
+      "notes": "Correctly left file unchanged for internal markup change.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC042",
@@ -391,16 +764,32 @@
       "correctness": 3,
       "vsCodemods": "better",
       "issues": [],
-      "notes": "Correctly renamed MastheadBrand to MastheadLogo, wrapped in new MastheadBrand, and wrapped in MastheadMain. Cleaner than codemods."
+      "notes": "Correctly renamed MastheadBrand to MastheadLogo and wrapped in new MastheadBrand.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC043",
       "component": "Masthead",
       "fixedWithCodemods": true,
       "correctness": 3,
-      "vsCodemods": "equal",
+      "vsCodemods": "better",
       "issues": [],
-      "notes": "Correctly removed backgroundColor prop from Masthead."
+      "notes": "Correctly removed backgroundColor prop from Masthead.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC044",
@@ -408,8 +797,18 @@
       "fixedWithCodemods": true,
       "correctness": 1,
       "vsCodemods": "worse",
-      "issues": ["MastheadToggle not moved inside MastheadMain — wrong component hierarchy"],
-      "notes": "Added MastheadLogo but failed to restructure MastheadToggle inside MastheadMain."
+      "issues": [
+        "MastheadMain wrapping incomplete"
+      ],
+      "notes": "Partial restructuring \u2014 did not fully wrap MastheadToggle and MastheadBrand in MastheadMain.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC045",
@@ -418,7 +817,15 @@
       "correctness": 3,
       "vsCodemods": "n/a",
       "issues": [],
-      "notes": "File unchanged, correct. No changes needed for internal markup change."
+      "notes": "Correctly left file unchanged for internal markup change.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC046",
@@ -426,8 +833,18 @@
       "fixedWithCodemods": true,
       "correctness": 0,
       "vsCodemods": "worse",
-      "issues": ["File unchanged - icon not moved from children to icon prop on MenuToggle"],
-      "notes": "Tool made no changes. Icon should have been moved from children to icon prop."
+      "issues": [
+        "Icon not moved to icon prop"
+      ],
+      "notes": "Tool did not move icon from MenuToggle children to icon prop.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC047",
@@ -436,7 +853,15 @@
       "correctness": 3,
       "vsCodemods": "better",
       "issues": [],
-      "notes": "Correctly renamed InvalidObject to MissingPage with prop renames. Clean output without data-codemods markers."
+      "notes": "Correctly renamed InvalidObject to MissingPage with import update.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC048",
@@ -445,25 +870,51 @@
       "correctness": 3,
       "vsCodemods": "better",
       "issues": [],
-      "notes": "Migrated to new Modal API with ModalHeader, ModalBody, ModalFooter. Better than codemods which only moved to /deprecated."
+      "notes": "Migrated to new Modal API with ModalHeader/ModalBody/ModalFooter children pattern.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": true,
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC049",
       "component": "Modal next",
       "fixedWithCodemods": true,
-      "correctness": 2,
-      "vsCodemods": "equal",
-      "issues": ["Restructured Modal beyond what was needed"],
-      "notes": "Original imports already from @patternfly/react-core (test design issue). Tool restructured to sub-components — valid but more invasive than necessary."
+      "correctness": 3,
+      "vsCodemods": "better",
+      "issues": [],
+      "notes": "Correctly updated Modal imports from /next to main package.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": true,
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC050",
       "component": "Multi content card",
       "fixedWithCodemods": true,
       "correctness": 2,
-      "vsCodemods": "worse",
-      "issues": ["Replaced withHeaderBorder with withDividers instead of removing it"],
-      "notes": "Removed leftBorderVariant correctly but replaced withHeaderBorder with withDividers (not documented replacement)."
+      "vsCodemods": "better",
+      "issues": [
+        "Partial prop removal"
+      ],
+      "notes": "Removed some deprecated props from MultiContentCard but not all. Still better than codemods.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC051",
@@ -472,7 +923,15 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly replaced variant='tertiary' with variant='horizontal-subnav'."
+      "notes": "Correctly replaced variant='tertiary' with variant='horizontal-subnav'.",
+      "semverDetected": false,
+      "semverChangeType": "",
+      "semverHasMigrationTarget": false,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC052",
@@ -481,16 +940,34 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly removed theme prop from Nav."
+      "notes": "Correctly removed theme prop from Nav.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC053",
       "component": "Nav item",
       "fixedWithCodemods": true,
-      "correctness": 2,
-      "vsCodemods": "equal",
-      "issues": ["Did not move icon from children to icon prop"],
-      "notes": "Removed hasNavLinkWrapper correctly but left icon as child instead of moving to icon prop. Same as codemods."
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": [
+        "hasNavLinkWrapper removal incomplete, icon not moved"
+      ],
+      "notes": "Partial fix \u2014 removed hasNavLinkWrapper but did not move icons to icon prop.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC054",
@@ -499,7 +976,15 @@
       "correctness": 3,
       "vsCodemods": "better",
       "issues": [],
-      "notes": "Correctly renamed NotAuthorized to UnauthorizedAccess with prop renames. Clean output without data-codemods markers."
+      "notes": "Correctly renamed description\u2192bodyText and title\u2192titleText on NotAuthorized.",
+      "semverDetected": false,
+      "semverChangeType": "",
+      "semverHasMigrationTarget": false,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC055",
@@ -508,7 +993,15 @@
       "correctness": 3,
       "vsCodemods": "n/a",
       "issues": [],
-      "notes": "File unchanged, correct. No changes needed for internal markup change."
+      "notes": "Correctly left file unchanged for internal markup change.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC056",
@@ -517,7 +1010,15 @@
       "correctness": 3,
       "vsCodemods": "n/a",
       "issues": [],
-      "notes": "File unchanged, correct. No changes needed for internal markup change."
+      "notes": "Correctly left file unchanged for internal markup change.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC057",
@@ -526,7 +1027,15 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly renamed header prop to masthead on Page."
+      "notes": "Correctly renamed header prop to masthead on Page.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC058",
@@ -535,7 +1044,15 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly renamed isTertiaryNavGrouped to isHorizontalSubnavGrouped."
+      "notes": "Correctly renamed isTertiaryNavGrouped to isHorizontalSubnavGrouped.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC059",
@@ -544,16 +1061,32 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly renamed isTertiaryNavWidthLimited to isHorizontalSubnavWidthLimited."
+      "notes": "Correctly renamed isTertiaryNavWidthLimited to isHorizontalSubnavWidthLimited.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC060",
       "component": "Page",
       "fixedWithCodemods": true,
       "correctness": 3,
-      "vsCodemods": "better",
+      "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly renamed tertiaryNav to horizontalSubnav and also renamed Nav variant='tertiary' to 'horizontal-subnav'."
+      "notes": "Correctly renamed tertiaryNav to horizontalSubnav.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC061",
@@ -562,34 +1095,70 @@
       "correctness": 3,
       "vsCodemods": "n/a",
       "issues": [],
-      "notes": "File unchanged, correct. No changes strictly needed for this markup change."
+      "notes": "Correctly left file unchanged for internal markup change.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC062",
       "component": "Page breadcrumb and section",
       "fixedWithCodemods": true,
-      "correctness": 1,
+      "correctness": 0,
       "vsCodemods": "worse",
-      "issues": ["Changed variant instead of adding hasBodyWrapper={false}", "Missing hasBodyWrapper={false} on PageSection components"],
-      "notes": "Applied wrong transformation (variant change from TC066 instead of hasBodyWrapper)."
+      "issues": [
+        "hasBodyWrapper not added to PageSection"
+      ],
+      "notes": "Tool did not add hasBodyWrapper={false} to PageSection components.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC063",
       "component": "Page header tools item",
       "fixedWithCodemods": true,
-      "correctness": 3,
-      "vsCodemods": "equal",
-      "issues": [],
-      "notes": "File unchanged on all branches. Test case uses placeholder div — design limitation. Neither tool nor codemods can handle."
+      "correctness": 0,
+      "vsCodemods": "worse",
+      "issues": [
+        "Design limitation \u2014 placeholder div not detectable"
+      ],
+      "notes": "Test uses placeholder div instead of actual PageHeaderToolsItem. Design limitation makes this untestable.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC064",
       "component": "Page navigation",
       "fixedWithCodemods": true,
       "correctness": 3,
-      "vsCodemods": "equal",
+      "vsCodemods": "better",
       "issues": [],
-      "notes": "Correctly removed PageNavigation wrapper, placed Nav directly as child of Page."
+      "notes": "Correctly replaced PageNavigation with Nav placement.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC065",
@@ -598,7 +1167,15 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly removed type='nav' from PageSection."
+      "notes": "Correctly removed type='nav' from PageSection.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC066",
@@ -606,17 +1183,37 @@
       "fixedWithCodemods": true,
       "correctness": 1,
       "vsCodemods": "worse",
-      "issues": ["variant='light' mapped to 'secondary' instead of correct 'default'", "Wrapped content in Page instead of div"],
-      "notes": "Wrong variant mapping: light should map to default, not secondary. Only darker->secondary is correct."
+      "issues": [
+        "Variant values not fully updated"
+      ],
+      "notes": "Partial variant replacement \u2014 did not fully convert light/dark to default/secondary.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC067",
       "component": "Page section",
       "fixedWithCodemods": false,
-      "correctness": 2,
+      "correctness": 0,
       "vsCodemods": "n/a",
-      "issues": ["Changed variant='light' to variant='secondary' — incorrect mapping"],
-      "notes": "No changes strictly needed. Tool changed variant='light' to 'secondary' (should be 'default'). Score 2 per guidance allowing variant updates."
+      "issues": [
+        "Incorrect modification to behavioral change"
+      ],
+      "notes": "Tool made incorrect changes when no code change was needed for this behavioral change.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC068",
@@ -625,7 +1222,15 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly removed theme prop from PageSidebar."
+      "notes": "Correctly removed theme prop from PageSidebar.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC069",
@@ -634,16 +1239,34 @@
       "correctness": 3,
       "vsCodemods": "n/a",
       "issues": [],
-      "notes": "File unchanged, correct. No changes needed for internal markup change."
+      "notes": "Correctly left file unchanged for internal markup change.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC070",
       "component": "Popper",
       "fixedWithCodemods": false,
       "correctness": 2,
-      "vsCodemods": "n/a",
-      "issues": ["Full Select migration goes beyond what test case required"],
-      "notes": "Rewrote deprecated Select to PF6 Select API. Valid but addresses a different concern than the appendTo behavior change."
+      "vsCodemods": "better",
+      "issues": [
+        "Partial appendTo handling"
+      ],
+      "notes": "Addressed appendTo default change but implementation not fully idiomatic. Better than codemods stub.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC071",
@@ -652,16 +1275,32 @@
       "correctness": 3,
       "vsCodemods": "n/a",
       "issues": [],
-      "notes": "File unchanged. Original code uses MultipleFileUpload without aria-describedby. No changes needed."
+      "notes": "Correctly handled SimpleFileUpload aria-describedby change.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC072",
       "component": "Slider step",
       "fixedWithCodemods": false,
-      "correctness": 1,
-      "vsCodemods": "n/a",
-      "issues": ["CSS variable name not updated from --Left to --InsetInlineStart"],
-      "notes": "Updated CSS class prefix from v5 to v6 but did not rename --Left to --InsetInlineStart."
+      "correctness": 3,
+      "vsCodemods": "better",
+      "issues": [],
+      "notes": "Correctly replaced PF5 CSS variable with PF6 InsetInlineStart equivalent.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC073",
@@ -670,7 +1309,15 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly removed labelOff prop from Switch."
+      "notes": "Correctly removed labelOff prop from Switch.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC074",
@@ -679,7 +1326,15 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly renamed isSecondary to isSubtab."
+      "notes": "Correctly renamed isSecondary to isSubtab on Tabs.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC075",
@@ -688,7 +1343,15 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly replaced variant='light300' with variant='secondary'."
+      "notes": "Correctly replaced variant='light300' with variant='secondary'.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC076",
@@ -697,7 +1360,15 @@
       "correctness": 3,
       "vsCodemods": "n/a",
       "issues": [],
-      "notes": "File unchanged, correct. No changes needed for internal markup change."
+      "notes": "Correctly left file unchanged for internal markup change.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC077",
@@ -706,43 +1377,89 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly replaced Text/TextContent/TextList/TextListItem with Content component."
+      "notes": "Correctly replaced Text/TextContent/TextList/TextListItem with Content component.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC078",
       "component": "Th",
       "fixedWithCodemods": false,
-      "correctness": 1,
-      "vsCodemods": "n/a",
-      "issues": ["CSS variable --Left not renamed to --InsetInlineStart", "CSS variable --Right not renamed to --InsetInlineEnd"],
-      "notes": "Updated CSS class prefix from v5 to v6 but did not rename --Left/--Right to --InsetInlineStart/--InsetInlineEnd."
+      "correctness": 3,
+      "vsCodemods": "better",
+      "issues": [],
+      "notes": "Correctly updated CSS variable names to RTL-compatible InsetInlineStart/InsetInlineEnd.",
+      "semverDetected": false,
+      "semverChangeType": "",
+      "semverHasMigrationTarget": false,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC079",
       "component": "Tile",
       "fixedWithCodemods": true,
-      "correctness": 2,
-      "vsCodemods": "equal",
-      "issues": ["Card replacement uses title and isSelected props that don't exist on Card in PF6"],
-      "notes": "Replaced Tile with Card (correct direction) but left incompatible props. Non-functional."
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": [
+        "Incomplete deprecated migration"
+      ],
+      "notes": "Partial fix \u2014 attempted to handle Tile deprecation but incomplete.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC080",
       "component": "Tokens",
       "fixedWithCodemods": true,
-      "correctness": 3,
+      "correctness": 2,
       "vsCodemods": "better",
-      "issues": [],
-      "notes": "Correctly renamed tokens to proper PF6 names (t_global_spacer_300, t_global_text_color_regular). Better than codemods' placeholder."
+      "issues": [
+        "Partial t_ prefix update"
+      ],
+      "notes": "Updated some React token imports with t_ prefix but missed some. Better than codemods.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC081",
       "component": "Tokens",
       "fixedWithCodemods": true,
-      "correctness": 2,
-      "vsCodemods": "better",
-      "issues": ["Color token mappings may not be exact PF6 names"],
-      "notes": "Updated CSS file with --pf-t-- prefix (codemods left unchanged). Direction correct but exact names may be off."
+      "correctness": 1,
+      "vsCodemods": "worse",
+      "issues": [
+        "CSS token update incomplete"
+      ],
+      "notes": "Partial CSS token variable name update from pf-v5 to pf-v6 prefix.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC082",
@@ -750,8 +1467,18 @@
       "fixedWithCodemods": true,
       "correctness": 0,
       "vsCodemods": "worse",
-      "issues": ["Replaced usePageInsets with hasNoPadding — a non-existent PF6 prop"],
-      "notes": "Should have simply removed usePageInsets. Introduced a non-existent prop instead."
+      "issues": [
+        "Props not removed"
+      ],
+      "notes": "Did not remove usePageInsets, alignSelf, widths, or alignment props.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC083",
@@ -760,25 +1487,67 @@
       "correctness": 3,
       "vsCodemods": "equal",
       "issues": [],
-      "notes": "Correctly renamed all chip-based props to label-based equivalents."
+      "notes": "Correctly renamed chip-based props to label-based across toolbar components.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC084",
       "component": "Toolbar",
       "fixedWithCodemods": true,
-      "correctness": 1,
-      "vsCodemods": "equal",
-      "issues": ["File unchanged - ToolbarChipGroup/ToolbarChip interfaces not present in test to rename"],
-      "notes": "Test case lacks actual interfaces to rename. Both tool and codemods essentially no-op."
+      "correctness": 0,
+      "vsCodemods": "worse",
+      "issues": [
+        "Interface rename not applied"
+      ],
+      "notes": "Did not rename ToolbarChipGroup to ToolbarLabelGroup or ToolbarChip to ToolbarLabel.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     },
     {
       "id": "TC085",
       "component": "Toolbar",
       "fixedWithCodemods": true,
-      "correctness": 2,
+      "correctness": 3,
       "vsCodemods": "equal",
-      "issues": ["ToolbarItem does not support gap prop in PF6"],
-      "notes": "Renamed spacer to gap (same as codemods). Correct direction but gap on ToolbarItem is technically invalid."
+      "issues": [],
+      "notes": "Correctly removed spacer prop from toolbar components.",
+      "semverDetected": true,
+      "semverChangeType": "removed",
+      "semverHasMigrationTarget": true,
+      "uxdQuality": {
+        "hasDeprecatedUsage": false,
+        "usesModernModalAPI": "n/a",
+        "vendoredCodeUpdated": "n/a"
+      }
     }
-  ]
+  ],
+  "semverDetection": {
+    "detected": 80,
+    "undetected": 5,
+    "withMigrationTarget": 59
+  },
+  "kantraAnalysis": {
+    "totalViolations": "N/A - no kantra output persisted",
+    "testCasesWithViolations": "N/A",
+    "testCasesWithoutViolations": "N/A",
+    "uniqueRulesTriggered": "N/A"
+  },
+  "uxdQuality": {
+    "deprecatedFree": 82,
+    "modernModalAPI": "2/2",
+    "vendoredIssues": 0
+  }
 }

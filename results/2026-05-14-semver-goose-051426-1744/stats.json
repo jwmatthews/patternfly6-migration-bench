@@ -1,0 +1,37 @@
+{
+  "migration": {
+    "branch": "semver/goose/051526-1744",
+    "base_branch": "main",
+    "timestamp": "2026-05-15T18:04:22Z"
+  },
+  "timing": {
+    "phase1_secs": 836,
+    "phase2_secs": 341,
+    "total_secs": 1177
+  },
+  "tokens": {
+    "groupBy": "client,model",
+    "entries": [
+      {
+        "client": "goose",
+        "mergedClients": null,
+        "model": "claude-opus-4-6",
+        "provider": "gcp_vertex_ai",
+        "input": 3503784,
+        "output": 116182,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "reasoning": 0,
+        "messageCount": 71,
+        "cost": 20.423470000000002
+      }
+    ],
+    "totalInput": 3503784,
+    "totalOutput": 116182,
+    "totalCacheRead": 0,
+    "totalCacheWrite": 0,
+    "totalMessages": 71,
+    "totalCost": 20.423470000000002,
+    "processingTimeMs": 1302
+  }
+}
